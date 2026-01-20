@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社CHARM - 太陽光事業・事務代行サービス</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Poppins:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+        --primary: #4A90A4;
+        --secondary: #7BC9A6;
+        --dark: #2C5F6F;
+        --light: #E8F5F7;
+        --white: #ffffff;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.8;
+        color: #333;
+        background-color: #fff;
+        overflow-x: hidden;
+        cursor: none;
+    }
+
+    /* カスタムカーソル */
+    .cursor {
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--primary);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transition: all 0.15s ease;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: difference;
+    }
+
+    .cursor-follower {
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--secondary);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9998;
+        transition: all 0.3s ease;
+        transform: translate(-50%, -50%);
+        opacity: 0.5;
+    }
+
+    .cursor.hover {
+        transform: translate(-50%, -50%) scale(1.5);
+        background: var(--primary);
+    }
+
+    /* スクロールプログレスバー */
+    .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        z-index: 9999;
+        transition: width 0.1s ease;
+    }
+
+    /* パーティクル背景 */
+    #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -2;
+    }
+
+    /* 背景デコレーション */
+    .bg-decoration {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .bg-circle {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.08;
+        animation: float 20s infinite ease-in-out;
+        filter: blur(60px);
+    }
+
+    .bg-circle:nth-child(1) {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, var(--primary), transparent);
+        top: -100px;
+        right: -100px;
+        animation-delay: 0s;
+    }
+
+    .bg-circle:nth-child(2) {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, var(--secondary), transparent);
+        bottom: 100px;
+        left: -50px;
+        animation-delay: 7s;
+    }
+
+    .bg-circle:nth-child(3) {
+        width: 350px;
+        height: 350px;
+        background: radial-gradient(circle, #C9E4F7, transparent);
+        top: 50%;
+        right: 10%;
+        animation-delay: 14s;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translate(0, 0) scale(1);
+        }
+        33% {
+            transform: translate(50px, -50px) scale(1.1);
+        }
+        66% {
+            transform: translate(-30px, 30px) scale(0.9);
+        }
+    }
+
+    /* ヘッダー */
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        z-index: 1000;
+        padding: 25px 0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    header.scrolled {
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        padding: 20px 0;
+    }
+
+    .header-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-family: 'Poppins', sans-serif;
+        font-size: 36px;
+        font-weight: 900;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: 2px;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .logo::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .logo:hover::after {
+        transform: scaleX(1);
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 50px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        font-size: 15px;
+        position: relative;
+        transition: all 0.3s;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-size: 13px;
+    }
+
+    nav a::before {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%) scaleX(0);
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        transition: transform 0.3s ease;
+    }
+
+    nav a::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -15px;
+        transform: translateY(-50%) scale(0);
+        width: 6px;
+        height: 6px;
+        background: var(--secondary);
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+    }
+
+    nav a:hover {
+        color: var(--primary);
+    }
+
+    nav a:hover::before {
+        transform: translateX(-50%) scaleX(1);
+    }
+
+    nav a:hover::after {
+        transform: translateY(-50%) scale(1);
+    }
+
+    /* メインビジュアル */
+    .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background: 
+            linear-gradient(135deg, rgba(232, 245, 247, 0.88) 0%, rgba(240, 248, 240, 0.85) 100%),
+            url('https://source.unsplash.com/1920x1080/?solar-panels,renewable-energy') center/cover no-repeat;
+        background-attachment: fixed;
+        text-align: center;
+        padding-top: 80px;
+        overflow: hidden;
+    }
+
+    .hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(74, 144, 164, 0.02) 35px, rgba(74, 144, 164, 0.02) 70px);
+        z-index: 0;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hero-content h1 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 120px;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, var(--dark), var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 900;
+        letter-spacing: 8px;
+        line-height: 1.1;
+        position: relative;
+        display: inline-block;
+    }
+
+    .hero-content .subtitle {
+        font-size: 28px;
+        color: #2C5F6F;
+        margin-bottom: 50px;
+        font-weight: 600;
+        letter-spacing: 4px;
+        animation: fadeIn 1.5s ease 0.3s backwards;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .hero-badges {
+        display: flex;
+        gap: 25px;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: fadeIn 1.5s ease 0.6s backwards;
+    }
+
+    .badge {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 16px 40px;
+        border-radius: 50px;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--primary);
+        border: 2px solid rgba(74, 144, 164, 0.3);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        letter-spacing: 1px;
+    }
+
+    .badge::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+        transition: left 0.5s;
+    }
+
+    .badge:hover::before {
+        left: 100%;
+    }
+
+    .badge:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(74, 144, 164, 0.3);
+        border-color: var(--primary);
+    }
+
+    .scroll-indicator {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateX(-50%) translateY(0);
+        }
+        40% {
+            transform: translateX(-50%) translateY(-15px);
+        }
+        60% {
+            transform: translateX(-50%) translateY(-8px);
+        }
+    }
+
+    /* セクション共通 */
+    section {
+        padding: 150px 60px;
+        position: relative;
+    }
+
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 100px;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .section-title.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .section-title .en {
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        font-weight: 900;
+        letter-spacing: 6px;
+        color: var(--primary);
+        display: block;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+    }
+
+    .section-title h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 56px;
+        color: var(--dark);
+        font-weight: 900;
+        position: relative;
+        display: inline-block;
+        letter-spacing: 2px;
+    }
+
+    .section-title h2::after {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border-radius: 3px;
+    }
+
+    /* 事業内容 */
+    #service {
+        background: linear-gradient(180deg, #fff 0%, #FAFCFC 100%);
+        position: relative;
+    }
+
+    .service-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 60px;
+        margin-top: 80px;
+    }
+
+    .service-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 60px 50px;
+        border-radius: 30px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(50px) rotateX(10deg);
+    }
+
+    .service-card.visible {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s ease;
+    }
+
+    .service-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(74, 144, 164, 0.05), rgba(123, 201, 166, 0.05));
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        z-index: -1;
+    }
+
+    .service-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .service-card:hover::after {
+        opacity: 1;
+    }
+
+    .service-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 30px 80px rgba(74, 144, 164, 0.2);
+    }
+
+    .service-icon {
+        width: 90px;
+        height: 90px;
+        background: linear-gradient(135deg, var(--light), #F0F8F0);
+        border-radius: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 35px;
+        font-size: 42px;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 30px rgba(74, 144, 164, 0.15);
+    }
+
+    .service-card:hover .service-icon {
+        transform: rotateY(360deg) scale(1.1);
+    }
+
+    .service-card h3 {
+        font-size: 28px;
+        margin-bottom: 25px;
+        color: var(--dark);
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+    .service-card p {
+        color: #666;
+        line-height: 2;
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    /* 企業理念 */
+    #philosophy {
+        background: linear-gradient(135deg, var(--light) 0%, #F0F8F0 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    #philosophy::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(74, 144, 164, 0.05) 1px, transparent 1px);
+        background-size: 50px 50px;
+        animation: moveGrid 20s linear infinite;
+    }
+
+    @keyframes moveGrid {
+        0% {
+            transform: translate(0, 0);
+        }
+        100% {
+            transform: translate(50px, 50px);
+        }
+    }
+
+    .philosophy-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(30px);
+        padding: 80px 70px;
+        border-radius: 40px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        position: relative;
+        opacity: 0;
+        transform: scale(0.95);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .philosophy-wrapper.visible {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .philosophy-content {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        max-width: 850px;
+        margin: 0 auto;
+    }
+
+    .philosophy-content .main-text {
+        font-size: 24px;
+        line-height: 2.2;
+        color: #222;
+        font-weight: 600;
+        margin-bottom: 50px;
+        letter-spacing: 0.5px;
+        position: relative;
+        padding: 30px 0;
+    }
+
+    .philosophy-content .main-text::before,
+    .philosophy-content .main-text::after {
+        content: '"';
+        font-size: 70px;
+        color: var(--primary);
+        opacity: 0.15;
+        font-family: Georgia, serif;
+        position: absolute;
+        line-height: 1;
+    }
+
+    .philosophy-content .main-text::before {
+        top: 0;
+        left: -10px;
+    }
+
+    .philosophy-content .main-text::after {
+        bottom: 0;
+        right: -10px;
+    }
+
+    .philosophy-content .sub-text {
+        font-size: 16px;
+        line-height: 2.1;
+        color: #666;
+        margin-bottom: 28px;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+    }
+
+    /* PC用の改行表示 */
+    .pc-only {
+        display: inline;
+    }
+
+    /* 会社情報 */
+    #company {
+        background: linear-gradient(180deg, #fff 0%, #FAFCFC 100%);
+    }
+
+    .company-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 40px;
+        overflow: hidden;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .company-wrapper.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .company-table {
+        padding: 70px 60px;
+    }
+
+    .company-table dl {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 35px 50px;
+    }
+
+    .company-table dt {
+        font-weight: 800;
+        color: var(--dark);
+        padding: 18px 0;
+        font-size: 15px;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: flex-start;
+        text-transform: uppercase;
+        position: relative;
+    }
+
+    .company-table dt::before {
+        content: '▸';
+        color: var(--secondary);
+        margin-right: 10px;
+        font-size: 18px;
+    }
+
+    .company-table dd {
+        color: #555;
+        padding: 18px 0;
+        border-bottom: 2px solid rgba(74, 144, 164, 0.1);
+        font-size: 16px;
+        line-height: 1.9;
+        transition: all 0.3s ease;
+    }
+
+    .company-table dd:hover {
+        color: var(--primary);
+        border-bottom-color: var(--primary);
+    }
+
+    .company-table dd:last-child {
+        border-bottom: none;
+    }
+
+    /* フッター */
+    footer {
+        background: linear-gradient(135deg, var(--dark), var(--primary));
+        color: #fff;
+        text-align: center;
+        padding: 80px 60px 50px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+
+    .footer-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .footer-logo {
+        font-family: 'Poppins', sans-serif;
+        font-size: 48px;
+        font-weight: 900;
+        margin-bottom: 40px;
+        letter-spacing: 3px;
+        animation: glow 2s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+        0%, 100% {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        50% {
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+        }
+    }
+
+    .footer-info {
+        margin-bottom: 40px;
+        font-size: 16px;
+        line-height: 2;
+    }
+
+    .footer-info p {
+        margin: 10px 0;
+        opacity: 0.95;
+    }
+
+    .copyright {
+        font-size: 13px;
+        opacity: 0.7;
+        padding-top: 40px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    /* 統計カウンター（追加要素） */
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        margin: 60px 0;
+    }
+
+    .stat-item {
+        text-align: center;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .stat-number {
+        font-family: 'Poppins', sans-serif;
+        font-size: 48px;
+        font-weight: 900;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+    }
+
+    .stat-label {
+        font-size: 14px;
+        color: #666;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 1024px) {
+        .hero-content h1 {
+            font-size: 80px;
+        }
+
+        .hero {
+            background-attachment: scroll;
+        }
+
+        section {
+            padding: 100px 40px;
+        }
+
+        .service-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        body {
+            cursor: auto;
+        }
+
+        .cursor, .cursor-follower {
+            display: none;
+        }
+
+        .header-container {
+            padding: 0 30px;
+        }
+
+        nav ul {
+            gap: 25px;
+            font-size: 12px;
+        }
+
+        .hero {
+            background-attachment: scroll;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            letter-spacing: 4px;
+        }
+
+        .hero-content .subtitle {
+            font-size: 18px;
+            letter-spacing: 3px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+        }
+
+        section {
+            padding: 80px 30px;
+        }
+
+        .service-grid {
+            gap: 40px;
+        }
+
+        .service-card {
+            padding: 40px 35px;
+        }
+
+        .philosophy-wrapper {
+            padding: 50px 35px;
+        }
+
+        .philosophy-content .main-text {
+            font-size: 18px;
+            line-height: 2;
+            padding: 20px 0;
+        }
+
+        .philosophy-content .main-text::before {
+            font-size: 50px;
+            top: -5px;
+            left: -5px;
+        }
+
+        .philosophy-content .main-text::after {
+            font-size: 50px;
+            bottom: -5px;
+            right: -5px;
+        }
+
+        .philosophy-content .sub-text {
+            font-size: 15px;
+            line-height: 2;
+            margin-bottom: 25px;
+        }
+
+        /* モバイルでは改行を非表示にして自然に折り返す */
+        .pc-only {
+            display: none;
+        }
+
+        .company-table {
+            padding: 50px 35px;
+        }
+
+        .company-table dl {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .company-table dt {
+            padding-bottom: 8px;
+        }
+
+        .company-table dd {
+            padding-top: 0;
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+    }
+
+    /* スムーススクロール */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* ローディングアニメーション */
+    .loader-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, var(--light), #F0F8F0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .loader-wrapper.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .loader {
+        width: 60px;
+        height: 60px;
+        border: 5px solid rgba(74, 144, 164, 0.2);
+        border-top-color: var(--primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+</head>
+<body>
+    <!-- ローディング -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- カスタムカーソル -->
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<!-- スクロールプログレスバー -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- パーティクル背景 -->
+<div id="particles-js"></div>
+
+<!-- 背景デコレーション -->
+<div class="bg-decoration">
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+</div>
+
+<!-- ヘッダー -->
+<header id="header">
+    <div class="header-container">
+        <div class="logo">CHARM</div>
+        <nav>
+            <ul>
+                <li><a href="#service">事業内容</a></li>
+                <li><a href="#philosophy">企業理念</a></li>
+                <li><a href="#company">会社情報</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- メインビジュアル -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>CHARM</h1>
+        <p class="subtitle">太陽の力で、未来を支える</p>
+        <div class="hero-badges">
+            <div class="badge">太陽光事業</div>
+            <div class="badge">事務代行サービス</div>
+        </div>
+    </div>
+    <div class="scroll-indicator" onclick="document.getElementById('service').scrollIntoView({behavior: 'smooth'})">
+        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.5 7L17.5 28M17.5 28L11 21.5M17.5 28L24 21.5" stroke="#4A90A4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+</section>
+
+<!-- 事業内容 -->
+<section id="service">
+    <div class="container">
+        <div class="section-title">
+            <span class="en">事業内容</span>
+            <h2>SERVICE</h2>
+        </div>
+        
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-icon">☀️</div>
+                <h3>太陽光事業</h3>
+                <p>
+                    クリーンエネルギーの普及を通じて、持続可能な社会の実現に貢献します。太陽光発電システムの販売から設置、アフターサポートまで、トータルでサポートいたします。環境に優しく、経済的なエネルギーソリューションをご提案します。
+                </p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>事務代行／バックオフィス業務</h3>
+                <p>
+                    企業の業務効率化を支援する事務代行サービスを提供しています。経理、人事、総務などのバックオフィス業務を代行し、お客様が本業に集中できる環境づくりをサポートします。柔軟で信頼性の高いサービスをお約束します。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 企業理念 -->
+<section id="philosophy">
+    <div class="container">
+        <div class="section-title">
+            <span class="en">企業理念</span>
+            <h2>PHILOSOPHY</h2>
+        </div>
+        <div class="philosophy-wrapper">
+            <div class="philosophy-content">
+                <p class="main-text">
+                    私たちは、自然エネルギーの力を最大限に活用し、<br class="pc-only">
+                    持続可能な未来の実現に貢献します。
+                </p>
+                <p class="sub-text">
+                    お客様のビジネスを支える信頼できるパートナーとして、<br class="pc-only">
+                    誠実なサービスと確かな技術で、社会に価値を提供し続けます。
+                </p>
+                <p class="sub-text">
+                    環境への配慮と経済的な発展の両立を目指し、<br class="pc-only">
+                    より良い社会づくりに貢献してまいります。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 会社情報 -->
+<section id="company">
+    <div class="container">
+        <div class="section-title">
+            <span class="en">会社情報</span>
+            <h2>COMPANY</h2>
+        </div>
+        <div class="company-wrapper">
+            <div class="company-table">
+                <dl>
+                    <dt>社名</dt>
+                    <dd>株式会社CHARM</dd>
+
+                    <dt>所在地</dt>
+                    <dd>〒460-0003<br>名古屋市中区錦三丁目５番３０号三晃錦ビル４Ｆ</dd>
+
+                    <dt>電話番号</dt>
+                    <dd>052-990-0362</dd>
+
+                    <dt>代表者</dt>
+                    <dd>（準備中）</dd>
+
+                    <dt>設立</dt>
+                    <dd>（準備中）</dd>
+
+                    <dt>資本金</dt>
+                    <dd>（準備中）</dd>
+
+                    <dt>事業内容</dt>
+                    <dd>
+                        ・太陽光事業<br>
+                        ・事務代行／バックオフィス業務
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- フッター -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">CHARM</div>
+        <div class="footer-info">
+            <p>株式会社CHARM</p>
+            <p>〒460-0003 名古屋市中区錦三丁目５番３０号三晃錦ビル４Ｆ</p>
+            <p>TEL: 052-990-0362</p>
+        </div>
+        <div class="copyright">
+            &copy; 2025 CHARM Corporation. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<!-- Particles.js -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script>
+    // ローディング
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            document.getElementById('loader').classList.add('hidden');
+        }, 1000);
+    });
+
+    // パーティクル設定
+    if (window.particlesJS) {
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#4A90A4' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.3, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#7BC9A6',
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: 'none',
+                    random: true,
+                    out_mode: 'out'
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'grab' },
+                    onclick: { enable: true, mode: 'push' }
+                },
+                modes: {
+                    grab: { distance: 140, line_linked: { opacity: 0.5 } },
+                    push: { particles_nb: 4 }
+                }
+            }
+        });
+    }
+
+    // カスタムカーソル
+    const cursor = document.querySelector('.cursor');
+    const follower = document.querySelector('.cursor-follower');
+
+    let mouseX = 0, mouseY = 0;
+    let followerX = 0, followerY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursor.style.left = mouseX + 'px';
+        cursor.style.top = mouseY + 'px';
+    });
+
+    function animateFollower() {
+        followerX += (mouseX - followerX) * 0.1;
+        followerY += (mouseY - followerY) * 0.1;
+        follower.style.left = followerX + 'px';
+        follower.style.top = followerY + 'px';
+        requestAnimationFrame(animateFollower);
+    }
+    animateFollower();
+
+    // ホバー効果
+    const hoverElements = document.querySelectorAll('a, button, .badge, .service-card');
+    hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+
+    // スクロールプログレスバー
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        document.getElementById('progressBar').style.width = scrollPercent + '%';
+    });
+
+    // ヘッダースクロール効果
+    window.addEventListener('scroll', function() {
+        const header = document.getElementById('header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // スクロールアニメーション
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 100);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.section-title, .service-card, .philosophy-wrapper, .company-wrapper').forEach(el => {
+        observer.observe(el);
+    });
+</script>
+</body>
+</html>
