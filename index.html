@@ -29,39 +29,6 @@
         color: #333;
         background-color: #fff;
         overflow-x: hidden;
-        cursor: none;
-    }
-
-    /* カスタムカーソル */
-    .cursor {
-        width: 20px;
-        height: 20px;
-        border: 2px solid var(--primary);
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 9999;
-        transition: all 0.15s ease;
-        transform: translate(-50%, -50%);
-        mix-blend-mode: difference;
-    }
-
-    .cursor-follower {
-        width: 40px;
-        height: 40px;
-        border: 1px solid var(--secondary);
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 9998;
-        transition: all 0.3s ease;
-        transform: translate(-50%, -50%);
-        opacity: 0.5;
-    }
-
-    .cursor.hover {
-        transform: translate(-50%, -50%) scale(1.5);
-        background: var(--primary);
     }
 
     /* スクロールプログレスバー */
@@ -355,6 +322,11 @@
         justify-content: center;
         flex-wrap: wrap;
         animation: fadeIn 1.5s ease 0.6s backwards;
+    }
+
+    a.badge {
+        text-decoration: none;
+        cursor: pointer;
     }
 
     .badge {
@@ -1042,14 +1014,6 @@
     }
 
     @media (max-width: 768px) {
-        body {
-            cursor: auto;
-        }
-
-        .cursor, .cursor-follower {
-            display: none;
-        }
-
         .header-container {
             padding: 0 20px;
         }
@@ -1202,10 +1166,6 @@
         <div class="loader"></div>
     </div>
 
-    <!-- カスタムカーソル -->
-<div class="cursor"></div>
-<div class="cursor-follower"></div>
-
 <!-- スクロールプログレスバー -->
 <div class="progress-bar" id="progressBar"></div>
 
@@ -1273,8 +1233,8 @@
         <h1>CHARM</h1>
         <p class="subtitle">太陽の力で、未来を支える</p>
         <div class="hero-badges">
-            <div class="badge">太陽光事業</div>
-            <div class="badge">事務代行サービス</div>
+            <a href="#service" class="badge">太陽光事業</a>
+            <a href="#service" class="badge">事務代行サービス</a>
         </div>
     </div>
     <div class="scroll-indicator" onclick="document.getElementById('service').scrollIntoView({behavior: 'smooth'})">
@@ -1436,36 +1396,6 @@
             }
         });
     }
-
-    // カスタムカーソル
-    const cursor = document.querySelector('.cursor');
-    const follower = document.querySelector('.cursor-follower');
-
-    let mouseX = 0, mouseY = 0;
-    let followerX = 0, followerY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursor.style.left = mouseX + 'px';
-        cursor.style.top = mouseY + 'px';
-    });
-
-    function animateFollower() {
-        followerX += (mouseX - followerX) * 0.1;
-        followerY += (mouseY - followerY) * 0.1;
-        follower.style.left = followerX + 'px';
-        follower.style.top = followerY + 'px';
-        requestAnimationFrame(animateFollower);
-    }
-    animateFollower();
-
-    // ホバー効果
-    const hoverElements = document.querySelectorAll('a, button, .badge, .service-card');
-    hoverElements.forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
 
     // スクロールプログレスバー
     window.addEventListener('scroll', () => {
