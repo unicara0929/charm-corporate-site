@@ -132,37 +132,6 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ---------- Custom Cursor ---------- */
-.cursor {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--primary);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transition: all 0.15s ease;
-    transform: translate(-50%, -50%);
-    mix-blend-mode: difference;
-}
-
-.cursor-follower {
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--secondary);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9998;
-    transition: all 0.3s ease;
-    transform: translate(-50%, -50%);
-    opacity: 0.5;
-}
-
-.cursor.hover {
-    transform: translate(-50%, -50%) scale(1.5);
-    background: var(--primary);
-}
 
 /* ---------- Progress Bar ---------- */
 .progress-bar {
@@ -1316,8 +1285,6 @@ h1, h2, h3, h4, h5, h6 {
         --header-height-scrolled: 60px;
     }
 
-    body { cursor: auto; }
-    .cursor, .cursor-follower { display: none; }
 
     .container { padding: 0 24px; }
     .header-inner { padding: 0 24px; }

@@ -50,36 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ---------- Custom Cursor ----------
-    const cursor = document.querySelector('.cursor');
-    const follower = document.querySelector('.cursor-follower');
-
-    if (cursor && follower && window.innerWidth > 768) {
-        let mouseX = 0, mouseY = 0;
-        let followerX = 0, followerY = 0;
-
-        document.addEventListener('mousemove', function (e) {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursor.style.left = mouseX + 'px';
-            cursor.style.top = mouseY + 'px';
-        });
-
-        function animateFollower() {
-            followerX += (mouseX - followerX) * 0.1;
-            followerY += (mouseY - followerY) * 0.1;
-            follower.style.left = followerX + 'px';
-            follower.style.top = followerY + 'px';
-            requestAnimationFrame(animateFollower);
-        }
-        animateFollower();
-
-        var hoverTargets = document.querySelectorAll('a, button, .badge, .card, .card-glass, .service-card, .btn, [data-hover]');
-        hoverTargets.forEach(function (el) {
-            el.addEventListener('mouseenter', function () { cursor.classList.add('hover'); });
-            el.addEventListener('mouseleave', function () { cursor.classList.remove('hover'); });
-        });
-    }
 
     // ---------- Scroll Progress Bar ----------
     var progressBar = document.getElementById('progressBar');
