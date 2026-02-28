@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ご利用の流れ - 株式会社CHARM | 太陽光事業・事務代行サービス</title>
+    <meta name="description" content="株式会社CHARMのサービスご利用の流れをご紹介します。太陽光事業・事務代行サービスの導入ステップを分かりやすく解説いたします。">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Page-Specific Styles -->
+    <style>
+        /* ============================================
+           Flow Page - Premium Styles
+           ============================================ */
+
+        /* ---------- Intro Text Section ---------- */
+        .flow-intro {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flow-intro::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(74, 144, 164, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 30s linear infinite;
+            pointer-events: none;
+        }
+
+        .flow-intro-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .flow-intro-lead {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 2;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+            position: relative;
+            padding: 30px 0;
+        }
+
+        .flow-intro-lead::before,
+        .flow-intro-lead::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .flow-intro-lead::before {
+            top: 0;
+        }
+
+        .flow-intro-lead::after {
+            bottom: 0;
+        }
+
+        .flow-intro-text {
+            font-size: 16px;
+            color: var(--gray-500);
+            line-height: 2.4;
+            max-width: 800px;
+            margin: 0 auto;
+            letter-spacing: 0.3px;
+        }
+
+        /* ---------- Solar Flow Section ---------- */
+        .solar-flow-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solar-flow-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(74, 144, 164, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 30s linear infinite;
+            pointer-events: none;
+        }
+
+        /* Timeline enhancements for flow page */
+        .flow-timeline .timeline-content {
+            transition: all var(--transition-slow);
+        }
+
+        .flow-timeline .timeline-content:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .flow-timeline .timeline-dot {
+            width: 24px;
+            height: 24px;
+            transition: all var(--transition-normal);
+        }
+
+        .flow-timeline .timeline-dot::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(74, 144, 164, 0.12);
+            z-index: -1;
+            animation: pulse-ring 2.5s infinite ease-out;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.8);
+                opacity: 0;
+            }
+        }
+
+        .flow-timeline .timeline-year {
+            display: inline-block;
+            padding: 4px 16px;
+            background: linear-gradient(135deg, var(--light), #F0F8F0);
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 3px;
+            margin-bottom: 14px;
+        }
+
+        .flow-timeline .timeline-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .flow-timeline .timeline-title .step-icon {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 18px;
+            box-shadow: 0 6px 16px rgba(74, 144, 164, 0.25);
+        }
+
+        .flow-timeline .timeline-text {
+            font-size: 15px;
+            color: var(--gray-500);
+            line-height: 2;
+        }
+
+        /* ---------- Back Office Flow Section ---------- */
+        .backoffice-flow-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .step-cards-grid::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 40px;
+            right: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .step-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 40px 28px 36px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-100);
+            position: relative;
+            z-index: 1;
+            transition: all var(--transition-slow);
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+
+        .step-card:hover::before {
+            opacity: 1;
+        }
+
+        .step-card-number {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            box-shadow: 0 8px 24px rgba(74, 144, 164, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-card-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--light), #F0F8F0);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--primary);
+            transition: all var(--transition-slow);
+        }
+
+        .step-card:hover .step-card-icon {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+        }
+
+        .step-card-title {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .step-card-text {
+            font-size: 14px;
+            color: var(--gray-500);
+            line-height: 1.9;
+        }
+
+        .step-card-arrow {
+            display: none;
+        }
+
+        /* Arrow connectors between step cards on desktop */
+        @media (min-width: 769px) {
+            .step-card-arrow {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: 58px;
+                right: -18px;
+                width: 32px;
+                height: 32px;
+                z-index: 3;
+                color: var(--primary);
+                font-size: 16px;
+                opacity: 0.5;
+            }
+        }
+
+        /* ---------- FAQ Section ---------- */
+        .flow-faq-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* ---------- Responsive: Flow Page ---------- */
+        @media (max-width: 1200px) {
+            .flow-intro-lead {
+                font-size: 24px;
+            }
+
+            .step-cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+
+            .step-cards-grid::before {
+                display: none;
+            }
+
+            .step-card-arrow {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .flow-intro-lead {
+                font-size: 20px;
+                line-height: 1.9;
+                padding: 24px 0;
+            }
+
+            .flow-intro-text {
+                font-size: 15px;
+                line-height: 2.2;
+            }
+
+            .step-cards-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+                gap: 16px;
+            }
+
+            .step-card {
+                padding: 32px 24px 28px;
+            }
+
+            .step-card-number {
+                width: 50px;
+                height: 50px;
+                font-size: 17px;
+                margin-bottom: 20px;
+            }
+
+            .step-card-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 22px;
+            }
+
+            .step-card-title {
+                font-size: 16px;
+            }
+
+            .step-card-text {
+                font-size: 13px;
+            }
+
+            .step-card-arrow {
+                display: none !important;
+            }
+
+            .flow-timeline .timeline-title {
+                font-size: 18px;
+            }
+
+            .flow-timeline .timeline-title .step-icon {
+                width: 38px;
+                height: 38px;
+                min-width: 38px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .flow-intro-lead {
+                font-size: 17px;
+            }
+
+            .step-card {
+                padding: 28px 20px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader-logo text-gradient">CHARM</div>
+        <div class="loader-bar-track">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Background Decoration -->
+    <div class="bg-decoration">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
+
+    <!-- ========== Header ========== -->
+    <header class="site-header" id="header">
+        <div class="header-inner">
+            <div class="header-logo">
+                <a href="index.html">CHARM</a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-desktop">
+                <a href="index.html">ホーム</a>
+                <a href="about.html">会社概要</a>
+                <a href="philosophy.html">企業理念</a>
+                <a href="solar.html">太陽光事業</a>
+                <a href="backoffice.html">事務代行</a>
+                <a href="works.html">実績紹介</a>
+                <a href="news.html">お知らせ</a>
+                <a href="recruit.html">採用情報</a>
+                <a href="contact.html" class="nav-cta">お問い合わせ</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" aria-label="メニュー">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav class="nav-mobile">
+            <a href="index.html">ホーム</a>
+            <a href="about.html">会社概要</a>
+            <a href="philosophy.html">企業理念</a>
+            <a href="solar.html">太陽光事業</a>
+            <a href="backoffice.html">事務代行</a>
+            <a href="works.html">実績紹介</a>
+            <a href="news.html">お知らせ</a>
+            <a href="recruit.html">採用情報</a>
+            <a href="contact.html">お問い合わせ</a>
+        </nav>
+    </header>
+
+    <!-- ========== Page Hero ========== -->
+    <section class="page-hero">
+        <div class="page-hero-deco" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">FLOW</div>
+        <div class="page-hero-content">
+            <span class="page-hero-label">ご利用の流れ</span>
+            <h1 class="page-hero-title text-gradient-dark">FLOW</h1>
+            <p class="page-hero-subtitle">サービスご利用開始までのステップをご紹介します</p>
+        </div>
+    </section>
+
+    <!-- ========== Breadcrumb ========== -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="index.html"><i class="fas fa-home"></i> ホーム</a></li>
+                <li class="separator"><i class="fas fa-chevron-right"></i></li>
+                <li class="current">ご利用の流れ</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- ========== Intro Text Section ========== -->
+    <section class="section flow-intro">
+        <div class="container">
+            <div class="flow-intro-content reveal">
+                <p class="flow-intro-lead">
+                    お問い合わせからサービス開始まで、<br class="pc-only">
+                    丁寧にサポートいたします。
+                </p>
+                <p class="flow-intro-text">
+                    株式会社CHARMでは、太陽光事業と事務代行サービスの両分野において、<br class="pc-only">
+                    お客様のご要望を丁寧にヒアリングし、最適なプランをご提案いたします。<br class="pc-only">
+                    初めてのお客様でも安心してご利用いただけるよう、<br class="pc-only">
+                    各ステップを分かりやすくご案内いたします。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Solar Business Flow Section ========== -->
+    <section class="section section-bg-light solar-flow-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Solar Energy Flow</span>
+                <h2 class="section-title">太陽光事業のご利用の流れ</h2>
+                <p class="section-desc">
+                    お問い合わせからアフターサポートまで、<br class="pc-only">
+                    ワンストップで対応いたします。
+                </p>
+            </div>
+
+            <div class="timeline flow-timeline">
+                <!-- STEP 01 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">STEP 01</span>
+                        <h3 class="timeline-title">
+                            <span class="step-icon"><i class="fas fa-headset"></i></span>
+                            お問い合わせ・ご相談
+                        </h3>
+                        <p class="timeline-text">
+                            まずはお電話またはお問い合わせフォームよりお気軽にご連絡ください。太陽光発電に関するご質問やご不明点など、専門スタッフが丁寧にお答えいたします。ご相談は無料で承っております。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- STEP 02 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">STEP 02</span>
+                        <h3 class="timeline-title">
+                            <span class="step-icon"><i class="fas fa-search-location"></i></span>
+                            現地調査・ヒアリング
+                        </h3>
+                        <p class="timeline-text">
+                            専門の技術者が現地を訪問し、屋根の形状や面積、日照条件、電気使用状況などを詳しく調査いたします。お客様のご要望や予算感もしっかりとヒアリングし、最適なプランの基礎情報を収集します。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- STEP 03 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">STEP 03</span>
+                        <h3 class="timeline-title">
+                            <span class="step-icon"><i class="fas fa-file-invoice"></i></span>
+                            プラン作成・お見積もり
+                        </h3>
+                        <p class="timeline-text">
+                            現地調査の結果をもとに、お客様に最適な太陽光発電システムのプランをご提案いたします。発電シミュレーションや投資回収の見通し、詳細なお見積もりを分かりやすくご説明いたします。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- STEP 04 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">STEP 04</span>
+                        <h3 class="timeline-title">
+                            <span class="step-icon"><i class="fas fa-handshake"></i></span>
+                            ご契約
+                        </h3>
+                        <p class="timeline-text">
+                            プラン内容やお見積もりにご納得いただけましたら、正式にご契約となります。契約内容は担当者が一つひとつ丁寧にご説明いたしますので、ご不明な点がございましたらお気軽にご質問ください。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- STEP 05 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">STEP 05</span>
+                        <h3 class="timeline-title">
+                            <span class="step-icon"><i class="fas fa-tools"></i></span>
+                            施工・設置
+                        </h3>
+                        <p class="timeline-text">
+                            経験豊富な施工チームが、安全かつ迅速に太陽光パネルの設置工事を行います。工事期間や作業内容は事前にご説明し、近隣への配慮も徹底いたします。設置完了後は動作確認テストを行い、正常稼働を確認いたします。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- STEP 06 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">STEP 06</span>
+                        <h3 class="timeline-title">
+                            <span class="step-icon"><i class="fas fa-shield-alt"></i></span>
+                            アフターサポート
+                        </h3>
+                        <p class="timeline-text">
+                            設置後も安心のアフターサポート体制を整えております。定期的なメンテナンスや発電量のモニタリング、万が一のトラブル対応まで、長期にわたってお客様の太陽光発電ライフをサポートいたします。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Back Office Flow Section ========== -->
+    <section class="section backoffice-flow-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Back Office Flow</span>
+                <h2 class="section-title">事務代行サービスのご利用の流れ</h2>
+                <p class="section-desc">
+                    業務分析からスタートし、最適な体制で<br class="pc-only">
+                    バックオフィス業務をサポートいたします。
+                </p>
+            </div>
+
+            <div class="step-cards-grid">
+                <!-- STEP 01 -->
+                <div class="step-card reveal stagger-1">
+                    <div class="step-card-number">01</div>
+                    <div class="step-card-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="step-card-title">ヒアリング</h3>
+                    <p class="step-card-text">
+                        お客様の現状の業務内容やお困りごと、ご要望を詳しくヒアリングいたします。オンラインでのご相談も可能です。
+                    </p>
+                    <span class="step-card-arrow"><i class="fas fa-chevron-right"></i></span>
+                </div>
+
+                <!-- STEP 02 -->
+                <div class="step-card reveal stagger-2">
+                    <div class="step-card-number">02</div>
+                    <div class="step-card-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="step-card-title">業務分析・ご提案</h3>
+                    <p class="step-card-text">
+                        ヒアリング内容をもとに業務フローを分析し、効率化のポイントを整理。最適なサポートプランをご提案いたします。
+                    </p>
+                    <span class="step-card-arrow"><i class="fas fa-chevron-right"></i></span>
+                </div>
+
+                <!-- STEP 03 -->
+                <div class="step-card reveal stagger-3">
+                    <div class="step-card-number">03</div>
+                    <div class="step-card-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3 class="step-card-title">ご契約・準備</h3>
+                    <p class="step-card-text">
+                        プラン内容にご合意いただけましたら、ご契約を締結。業務マニュアルの整備やツールの導入準備を進めます。
+                    </p>
+                    <span class="step-card-arrow"><i class="fas fa-chevron-right"></i></span>
+                </div>
+
+                <!-- STEP 04 -->
+                <div class="step-card reveal stagger-4">
+                    <div class="step-card-number">04</div>
+                    <div class="step-card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="step-card-title">業務開始</h3>
+                    <p class="step-card-text">
+                        準備が整い次第、事務代行業務を開始いたします。専任の担当者がスムーズな業務遂行を責任を持って行います。
+                    </p>
+                    <span class="step-card-arrow"><i class="fas fa-chevron-right"></i></span>
+                </div>
+
+                <!-- STEP 05 -->
+                <div class="step-card reveal stagger-5">
+                    <div class="step-card-number">05</div>
+                    <div class="step-card-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="step-card-title">定期レビュー</h3>
+                    <p class="step-card-text">
+                        定期的に業務状況をレビューし、改善点を共有いたします。お客様のビジネス成長に合わせてサポート内容を最適化します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAQ Section ========== -->
+    <section class="section section-bg-light flow-faq-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">FAQ</span>
+                <h2 class="section-title">よくあるご質問</h2>
+                <p class="section-desc">
+                    サービスのご利用に関して、<br class="pc-only">
+                    よくいただくご質問をまとめました。
+                </p>
+            </div>
+
+            <div class="faq-list">
+                <!-- FAQ 01 -->
+                <div class="faq-item reveal stagger-1">
+                    <div class="faq-question">
+                        <span>初回の相談やお見積もりは無料ですか？</span>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            はい、初回のご相談・お見積もりは無料で承っております。太陽光事業・事務代行サービスいずれの場合も、まずはお気軽にお問い合わせください。お客様のご状況を伺ったうえで、最適なご提案をさせていただきます。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 02 -->
+                <div class="faq-item reveal stagger-2">
+                    <div class="faq-question">
+                        <span>お問い合わせからサービス開始までどのくらいの期間がかかりますか？</span>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            太陽光事業の場合は、現地調査からプラン作成、施工完了まで通常1〜3ヶ月程度を目安としております。事務代行サービスの場合は、ヒアリングから業務開始まで最短2週間程度で対応可能です。いずれもお客様のご状況やご要望に応じて柔軟に対応いたします。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 03 -->
+                <div class="faq-item reveal stagger-3">
+                    <div class="faq-question">
+                        <span>対応エリアはどこまでですか？</span>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            太陽光事業は愛知県を中心に東海エリアで対応しております。事務代行サービスはオンラインでの業務対応も可能なため、全国のお客様にご利用いただけます。詳しい対応エリアについてはお気軽にお問い合わせください。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 04 -->
+                <div class="faq-item reveal stagger-4">
+                    <div class="faq-question">
+                        <span>契約期間の縛りはありますか？</span>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            事務代行サービスにつきましては、お客様のニーズに合わせた柔軟な契約プランをご用意しております。短期間のスポット対応から、長期的な継続契約まで幅広く対応可能です。詳細はヒアリング時にご相談ください。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA Section ========== -->
+    <section class="cta-section">
+        <div class="cta-content reveal">
+            <h2 class="cta-title">まずはお気軽にご相談ください</h2>
+            <p class="cta-text">
+                太陽光事業・事務代行サービスに関するご質問やご相談など、<br class="pc-only">
+                どんな些細なことでもお気軽にお問い合わせください。
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="contact.html" class="btn btn-white btn-lg btn-arrow">
+                    お問い合わせ <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="tel:052-990-0362" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,0.4); color: #fff;">
+                    <i class="fas fa-phone-alt"></i> 052-990-0362
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Footer ========== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-grid">
+                    <!-- Brand Column -->
+                    <div class="footer-brand">
+                        <div class="footer-logo">CHARM</div>
+                        <p>太陽の力で、未来を支える。<br>人の力で、ビジネスを支える。</p>
+                    </div>
+
+                    <!-- Services Column -->
+                    <div>
+                        <h4 class="footer-heading">Services</h4>
+                        <ul class="footer-links">
+                            <li><a href="solar.html">太陽光事業</a></li>
+                            <li><a href="backoffice.html">事務代行</a></li>
+                            <li><a href="works.html">実績紹介</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company Column -->
+                    <div>
+                        <h4 class="footer-heading">Company</h4>
+                        <ul class="footer-links">
+                            <li><a href="about.html">会社概要</a></li>
+                            <li><a href="philosophy.html">企業理念</a></li>
+                            <li><a href="news.html">お知らせ</a></li>
+                            <li><a href="recruit.html">採用情報</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Column -->
+                    <div>
+                        <h4 class="footer-heading">Contact</h4>
+                        <div class="footer-contact-item">
+                            <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                            <span>〒460-0003<br>名古屋市中区錦三丁目５番３０号<br>三晃錦ビル４Ｆ</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <span class="icon"><i class="fas fa-phone-alt"></i></span>
+                            <span>052-990-0362</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-inner">
+                    <p class="copyright">&copy; 2025 CHARM Corporation. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">プライバシーポリシー</a>
+                        <a href="contact.html">お問い合わせ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== Scripts ========== -->
+    <!-- Particles.js CDN -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

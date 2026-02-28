@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ - 株式会社CHARM | 太陽光事業・事務代行サービス</title>
+    <meta name="description" content="株式会社CHARMへのお問い合わせページです。太陽光事業・事務代行サービスに関するご質問やご相談など、お気軽にお問い合わせください。">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Page-Specific Styles -->
+    <style>
+        /* ============================================
+           Contact Page - Premium Styles
+           ============================================ */
+
+        /* ---------- Contact Layout ---------- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        /* ---------- Contact Form ---------- */
+        .contact-form-wrapper {
+            position: relative;
+        }
+
+        .contact-form-card {
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .contact-form-card::after {
+            content: 'FORM';
+            position: absolute;
+            bottom: -40px;
+            right: -20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 160px;
+            font-weight: 900;
+            color: var(--primary);
+            opacity: 0.02;
+            pointer-events: none;
+            user-select: none;
+            letter-spacing: 10px;
+        }
+
+        .contact-form-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-form-desc {
+            font-size: 14px;
+            color: var(--gray-500);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .form-label .required {
+            color: #E8706F;
+            font-size: 12px;
+            margin-left: 6px;
+            font-weight: 600;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            font-family: inherit;
+            color: var(--gray-700);
+            background: var(--white);
+            transition: all var(--transition-normal);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--gray-400);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(74, 144, 164, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 180px;
+            resize: vertical;
+            line-height: 1.8;
+        }
+
+        .form-select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236B7280' viewBox='0 0 16 16'%3E%3Cpath d='M4.646 5.646a.5.5 0 01.708 0L8 8.293l2.646-2.647a.5.5 0 01.708.708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 010-.708z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 20px;
+            padding-right: 48px;
+            cursor: pointer;
+        }
+
+        .form-select option {
+            padding: 12px;
+        }
+
+        /* Checkbox */
+        .form-checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 36px;
+            padding: 20px 24px;
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-100);
+        }
+
+        .form-checkbox {
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            margin-top: 2px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .form-checkbox-label {
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        .form-checkbox-label a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color var(--transition-fast);
+        }
+
+        .form-checkbox-label a:hover {
+            color: var(--primary-dark);
+        }
+
+        .form-submit-area {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .form-submit-area .btn {
+            width: 100%;
+            max-width: 360px;
+            font-size: 16px;
+        }
+
+        /* ---------- Contact Sidebar ---------- */
+        .contact-sidebar {
+            position: sticky;
+            top: 120px;
+        }
+
+        .contact-info-card {
+            padding: 32px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: all var(--transition-normal);
+            cursor: default;
+        }
+
+        .contact-info-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .contact-info-icon {
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 22px;
+            box-shadow: 0 8px 20px rgba(74, 144, 164, 0.25);
+            transition: all var(--transition-slow);
+        }
+
+        .contact-info-card:hover .contact-info-icon {
+            transform: rotateY(180deg);
+        }
+
+        .contact-info-content h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .contact-info-content p {
+            font-size: 16px;
+            color: var(--dark);
+            font-weight: 700;
+            line-height: 1.6;
+        }
+
+        .contact-info-content .info-sub {
+            font-size: 13px;
+            color: var(--gray-500);
+            font-weight: 400;
+            margin-top: 4px;
+        }
+
+        /* ---------- Access Section ---------- */
+        .access-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .access-card {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            overflow: hidden;
+        }
+
+        .access-card-left {
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .access-card-left h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--dark);
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+
+        .access-detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .access-detail-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .access-detail-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: linear-gradient(135deg, var(--light), #F0F8F0);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .access-detail-text {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        .access-detail-text strong {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .access-card-right {
+            background: linear-gradient(135deg, var(--light) 0%, #F0F8F0 100%);
+            padding: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .access-card-right::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(
+                45deg, transparent, transparent 20px,
+                rgba(74, 144, 164, 0.02) 20px, rgba(74, 144, 164, 0.02) 40px
+            );
+            pointer-events: none;
+        }
+
+        .access-map-pin {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 12px 30px rgba(74, 144, 164, 0.3);
+            animation: float-gentle 3s ease-in-out infinite;
+        }
+
+        .access-map-pin i {
+            transform: rotate(45deg);
+            color: var(--white);
+            font-size: 28px;
+        }
+
+        .access-map-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--dark);
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .access-map-address {
+            font-size: 14px;
+            color: var(--gray-500);
+            line-height: 2;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ---------- Responsive: Contact Page ---------- */
+        @media (max-width: 1200px) {
+            .contact-grid {
+                gap: 50px;
+            }
+
+            .contact-form-card {
+                padding: 48px;
+            }
+        }
+
+        @media (max-width: 960px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-sidebar {
+                position: static;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+
+            .contact-info-card {
+                margin-bottom: 0;
+            }
+
+            .access-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-form-card {
+                padding: 32px 24px;
+            }
+
+            .contact-form-card::after {
+                font-size: 100px;
+                bottom: -20px;
+                right: -10px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .contact-sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info-card {
+                padding: 24px;
+            }
+
+            .contact-info-icon {
+                width: 48px;
+                height: 48px;
+                min-width: 48px;
+                font-size: 20px;
+            }
+
+            .access-card-left,
+            .access-card-right {
+                padding: 40px 28px;
+            }
+
+            .form-checkbox-group {
+                padding: 16px 20px;
+            }
+
+            .form-submit-area .btn {
+                width: 100%;
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-form-card {
+                padding: 24px 20px;
+            }
+
+            .contact-info-content p {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader-logo text-gradient">CHARM</div>
+        <div class="loader-bar-track">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Background Decoration -->
+    <div class="bg-decoration">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
+
+    <!-- ========== Header ========== -->
+    <header class="site-header" id="header">
+        <div class="header-inner">
+            <div class="header-logo">
+                <a href="index.html">CHARM</a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-desktop">
+                <a href="index.html">ホーム</a>
+                <a href="about.html">会社概要</a>
+                <a href="philosophy.html">企業理念</a>
+                <a href="solar.html">太陽光事業</a>
+                <a href="backoffice.html">事務代行</a>
+                <a href="works.html">実績紹介</a>
+                <a href="news.html">お知らせ</a>
+                <a href="recruit.html">採用情報</a>
+                <a href="contact.html" class="active nav-cta">お問い合わせ</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" aria-label="メニュー">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav class="nav-mobile">
+            <a href="index.html">ホーム</a>
+            <a href="about.html">会社概要</a>
+            <a href="philosophy.html">企業理念</a>
+            <a href="solar.html">太陽光事業</a>
+            <a href="backoffice.html">事務代行</a>
+            <a href="works.html">実績紹介</a>
+            <a href="news.html">お知らせ</a>
+            <a href="recruit.html">採用情報</a>
+            <a href="contact.html">お問い合わせ</a>
+        </nav>
+    </header>
+
+    <!-- ========== Page Hero ========== -->
+    <section class="page-hero">
+        <div class="page-hero-deco" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">CONTACT</div>
+        <div class="page-hero-content">
+            <span class="page-hero-label">お問い合わせ</span>
+            <h1 class="page-hero-title text-gradient-dark">CONTACT</h1>
+            <p class="page-hero-subtitle">お気軽にお問い合わせください</p>
+        </div>
+    </section>
+
+    <!-- ========== Breadcrumb ========== -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="index.html"><i class="fas fa-home"></i> ホーム</a></li>
+                <li class="separator"><i class="fas fa-chevron-right"></i></li>
+                <li class="current">お問い合わせ</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- ========== Contact Form & Info Section ========== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Contact</span>
+                <h2 class="section-title">お問い合わせ</h2>
+                <p class="section-desc">
+                    太陽光事業・事務代行サービスに関するご質問やご相談など、<br class="pc-only">
+                    下記フォームよりお気軽にお問い合わせください。
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- LEFT: Contact Form -->
+                <div class="contact-form-wrapper reveal-left stagger-2">
+                    <div class="contact-form-card card-glass">
+                        <h3 class="contact-form-title">お問い合わせフォーム</h3>
+                        <p class="contact-form-desc"><span style="color: #E8706F;">*</span> は必須項目です</p>
+
+                        <form action="#" method="post" onsubmit="return false;">
+                            <!-- Name & Company Row -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="contact-name">
+                                        お名前 <span class="required">*必須</span>
+                                    </label>
+                                    <input type="text" id="contact-name" name="name" class="form-input" placeholder="山田 太郎" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="contact-company">
+                                        会社名
+                                    </label>
+                                    <input type="text" id="contact-company" name="company" class="form-input" placeholder="株式会社○○">
+                                </div>
+                            </div>
+
+                            <!-- Email & Phone Row -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="contact-email">
+                                        メールアドレス <span class="required">*必須</span>
+                                    </label>
+                                    <input type="email" id="contact-email" name="email" class="form-input" placeholder="example@email.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="contact-phone">
+                                        電話番号
+                                    </label>
+                                    <input type="tel" id="contact-phone" name="phone" class="form-input" placeholder="052-000-0000">
+                                </div>
+                            </div>
+
+                            <!-- Inquiry Type -->
+                            <div class="form-group">
+                                <label class="form-label" for="contact-type">
+                                    お問い合わせ種別
+                                </label>
+                                <select id="contact-type" name="type" class="form-select">
+                                    <option value="" disabled selected>選択してください</option>
+                                    <option value="solar">太陽光事業について</option>
+                                    <option value="backoffice">事務代行サービスについて</option>
+                                    <option value="recruit">採用について</option>
+                                    <option value="other">その他</option>
+                                </select>
+                            </div>
+
+                            <!-- Message -->
+                            <div class="form-group">
+                                <label class="form-label" for="contact-message">
+                                    お問い合わせ内容 <span class="required">*必須</span>
+                                </label>
+                                <textarea id="contact-message" name="message" class="form-textarea" placeholder="お問い合わせ内容をご記入ください" required></textarea>
+                            </div>
+
+                            <!-- Privacy Policy Checkbox -->
+                            <div class="form-checkbox-group">
+                                <input type="checkbox" id="contact-privacy" name="privacy" class="form-checkbox" required>
+                                <label class="form-checkbox-label" for="contact-privacy">
+                                    <a href="privacy.html" target="_blank">プライバシーポリシー</a>に同意の上、送信してください。
+                                </label>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="form-submit-area">
+                                <button type="submit" class="btn btn-primary btn-lg btn-arrow">
+                                    送信する <span class="arrow"><i class="fas fa-paper-plane"></i></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Contact Info Cards -->
+                <div class="contact-sidebar reveal-right stagger-3">
+                    <!-- Phone Card -->
+                    <div class="contact-info-card card-glass">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Phone</h4>
+                            <p>052-990-0362</p>
+                            <p class="info-sub">受付時間 9:00-18:00（土日祝除く）</p>
+                        </div>
+                    </div>
+
+                    <!-- Address Card -->
+                    <div class="contact-info-card card-glass">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Address</h4>
+                            <p>〒460-0003<br>名古屋市中区錦三丁目５番３０号<br>三晃錦ビル４Ｆ</p>
+                        </div>
+                    </div>
+
+                    <!-- Email Card -->
+                    <div class="contact-info-card card-glass">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Email</h4>
+                            <p>info@charm-corp.jp</p>
+                            <p class="info-sub">24時間受付</p>
+                        </div>
+                    </div>
+
+                    <!-- Business Hours Card -->
+                    <div class="contact-info-card card-glass">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Business Hours</h4>
+                            <p>平日 9:00〜18:00</p>
+                            <p class="info-sub">土日祝日は休業</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Access Section ========== -->
+    <section class="section section-bg-light access-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Access</span>
+                <h2 class="section-title">アクセス</h2>
+                <p class="section-desc">名古屋市中区錦、ビジネスの中心地に拠点を構えています。</p>
+            </div>
+
+            <div class="access-card card-glass reveal stagger-2">
+                <!-- Left: Address Details -->
+                <div class="access-card-left">
+                    <h3>OFFICE</h3>
+
+                    <div class="access-detail-item">
+                        <div class="access-detail-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="access-detail-text">
+                            <strong>Building</strong>
+                            三晃錦ビル ４Ｆ
+                        </div>
+                    </div>
+
+                    <div class="access-detail-item">
+                        <div class="access-detail-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="access-detail-text">
+                            <strong>Address</strong>
+                            〒460-0003<br>
+                            愛知県名古屋市中区錦三丁目５番３０号<br>
+                            三晃錦ビル４Ｆ
+                        </div>
+                    </div>
+
+                    <div class="access-detail-item">
+                        <div class="access-detail-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="access-detail-text">
+                            <strong>Telephone</strong>
+                            052-990-0362
+                        </div>
+                    </div>
+
+                    <div class="access-detail-item">
+                        <div class="access-detail-icon">
+                            <i class="fas fa-train"></i>
+                        </div>
+                        <div class="access-detail-text">
+                            <strong>Nearest Station</strong>
+                            地下鉄東山線・名城線「栄」駅より徒歩圏内
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Decorative Map Card -->
+                <div class="access-card-right">
+                    <div style="position: relative; z-index: 1;">
+                        <div class="access-map-pin">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="access-map-name">CHARM</div>
+                        <p class="access-map-address">
+                            〒460-0003<br>
+                            愛知県名古屋市中区<br>
+                            錦三丁目５番３０号<br>
+                            三晃錦ビル４Ｆ
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Footer ========== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-grid">
+                    <!-- Brand Column -->
+                    <div class="footer-brand">
+                        <div class="footer-logo">CHARM</div>
+                        <p>太陽の力で、未来を支える。<br>人の力で、ビジネスを支える。</p>
+                    </div>
+
+                    <!-- Services Column -->
+                    <div>
+                        <h4 class="footer-heading">Services</h4>
+                        <ul class="footer-links">
+                            <li><a href="solar.html">太陽光事業</a></li>
+                            <li><a href="backoffice.html">事務代行</a></li>
+                            <li><a href="works.html">実績紹介</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company Column -->
+                    <div>
+                        <h4 class="footer-heading">Company</h4>
+                        <ul class="footer-links">
+                            <li><a href="about.html">会社概要</a></li>
+                            <li><a href="philosophy.html">企業理念</a></li>
+                            <li><a href="news.html">お知らせ</a></li>
+                            <li><a href="recruit.html">採用情報</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Column -->
+                    <div>
+                        <h4 class="footer-heading">Contact</h4>
+                        <div class="footer-contact-item">
+                            <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                            <span>〒460-0003<br>名古屋市中区錦三丁目５番３０号<br>三晃錦ビル４Ｆ</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <span class="icon"><i class="fas fa-phone-alt"></i></span>
+                            <span>052-990-0362</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-inner">
+                    <p class="copyright">&copy; 2025 CHARM Corporation. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="privacy.html">プライバシーポリシー</a>
+                        <a href="contact.html">お問い合わせ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== Scripts ========== -->
+    <!-- Particles.js CDN -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

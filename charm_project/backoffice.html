@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事務代行サービス - 株式会社CHARM</title>
+    <meta name="description" content="株式会社CHARMの事務代行・バックオフィスサービス。経理・会計、人事・労務、総務・庶務、データ入力まで、専門スタッフが貴社の業務効率化をサポートします。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&family=Poppins:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ========== Back Office Page Specific Styles ========== */
+
+        /* Lead Section */
+        .lead-section {
+            padding: 100px 60px 60px;
+            position: relative;
+        }
+
+        .lead-text {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .lead-text p {
+            font-size: 17px;
+            color: var(--gray-600);
+            line-height: 2.2;
+            letter-spacing: 0.3px;
+        }
+
+        /* Service Categories */
+        .service-categories {
+            padding: 80px 60px 140px;
+            position: relative;
+        }
+
+        .service-cat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-cat-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 50px 45px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-100);
+            transition: all var(--transition-slow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-cat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition-slow);
+        }
+
+        .service-cat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .service-cat-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-cat-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--light), #F0F8F0);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 28px;
+            box-shadow: 0 8px 24px rgba(74, 144, 164, 0.12);
+            transition: all var(--transition-slow);
+        }
+
+        .service-cat-card:hover .service-cat-icon {
+            transform: scale(1.1) rotateY(180deg);
+        }
+
+        .service-cat-card h3 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .service-cat-card > p {
+            font-size: 15px;
+            color: var(--gray-500);
+            line-height: 2;
+            margin-bottom: 24px;
+        }
+
+        .service-cat-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .service-cat-list li {
+            padding: 10px 0;
+            font-size: 14px;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--gray-100);
+            transition: all var(--transition-fast);
+        }
+
+        .service-cat-list li:last-child {
+            border-bottom: none;
+        }
+
+        .service-cat-list li:hover {
+            color: var(--primary);
+            padding-left: 8px;
+        }
+
+        .service-cat-list li i {
+            color: var(--secondary);
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        /* Why Choose Us */
+        .why-section {
+            padding: 140px 60px;
+            background: linear-gradient(135deg, var(--light) 0%, #F0F8F0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-section .grid-pattern {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(74, 144, 164, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: moveGrid 30s linear infinite;
+            pointer-events: none;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--radius-xl);
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: all var(--transition-slow);
+        }
+
+        .why-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .why-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+            font-size: 40px;
+            color: var(--white);
+            box-shadow: var(--shadow-primary);
+            transition: all var(--transition-slow);
+        }
+
+        .why-card:hover .why-icon {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(74, 144, 164, 0.35);
+        }
+
+        .why-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            line-height: 1.1;
+        }
+
+        .why-card h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .why-card p {
+            font-size: 15px;
+            color: var(--gray-500);
+            line-height: 2;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 140px 60px;
+            position: relative;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-100);
+            overflow: hidden;
+            transition: all var(--transition-slow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--primary);
+            position: relative;
+            transform: scale(1.04);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.04) translateY(-10px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 0;
+            right: 32px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 20px;
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            letter-spacing: 1px;
+        }
+
+        .pricing-header {
+            padding: 48px 40px 32px;
+            text-align: center;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .pricing-card.featured .pricing-header {
+            background: linear-gradient(135deg, var(--light), #F0F8F0);
+        }
+
+        .pricing-name {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-price {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .pricing-note {
+            font-size: 13px;
+            color: var(--gray-400);
+        }
+
+        .pricing-body {
+            padding: 32px 40px;
+            flex: 1;
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            font-size: 14px;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--gray-50);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features li i {
+            color: var(--secondary);
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .pricing-features li i.fa-xmark {
+            color: var(--gray-300);
+        }
+
+        .pricing-footer {
+            padding: 20px 40px 40px;
+            text-align: center;
+        }
+
+        .pricing-footer .btn {
+            width: 100%;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 140px 60px;
+            background: linear-gradient(180deg, var(--gray-50), var(--white));
+        }
+
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .service-cat-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .pricing-grid {
+                gap: 24px;
+            }
+
+            .lead-section {
+                padding: 80px 40px 40px;
+            }
+
+            .service-categories {
+                padding: 60px 40px 100px;
+            }
+
+            .why-section {
+                padding: 100px 40px;
+            }
+
+            .pricing-section {
+                padding: 100px 40px;
+            }
+
+            .faq-section {
+                padding: 100px 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .lead-section {
+                padding: 60px 24px 30px;
+            }
+
+            .lead-text p {
+                font-size: 15px;
+                line-height: 2;
+            }
+
+            .service-categories {
+                padding: 40px 24px 80px;
+            }
+
+            .service-cat-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .service-cat-card {
+                padding: 36px 30px;
+            }
+
+            .service-cat-card h3 {
+                font-size: 20px;
+            }
+
+            .why-section {
+                padding: 80px 24px;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .why-card {
+                padding: 40px 30px;
+            }
+
+            .pricing-section {
+                padding: 80px 24px;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                max-width: 500px;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+
+            .faq-section {
+                padding: 80px 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-cat-card {
+                padding: 30px 24px;
+            }
+
+            .pricing-header {
+                padding: 36px 24px 24px;
+            }
+
+            .pricing-body {
+                padding: 24px;
+            }
+
+            .pricing-footer {
+                padding: 16px 24px 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader-logo text-gradient">CHARM</div>
+        <div class="loader-bar-track">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Background Decoration -->
+    <div class="bg-decoration">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="header-logo"><a href="index.html">CHARM</a></div>
+            <nav class="nav-desktop">
+                <a href="index.html">ホーム</a>
+                <a href="about.html">会社概要</a>
+                <a href="philosophy.html">企業理念</a>
+                <a href="solar.html">太陽光事業</a>
+                <a href="backoffice.html" class="active">事務代行</a>
+                <a href="works.html">実績紹介</a>
+                <a href="news.html">お知らせ</a>
+                <a href="recruit.html">採用情報</a>
+                <a href="contact.html" class="nav-cta">お問い合わせ</a>
+            </nav>
+            <button class="menu-toggle" aria-label="メニューを開く">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-mobile">
+                <a href="index.html">ホーム</a>
+                <a href="about.html">会社概要</a>
+                <a href="philosophy.html">企業理念</a>
+                <a href="solar.html">太陽光事業</a>
+                <a href="backoffice.html" class="active">事務代行</a>
+                <a href="works.html">実績紹介</a>
+                <a href="news.html">お知らせ</a>
+                <a href="recruit.html">採用情報</a>
+                <a href="contact.html">お問い合わせ</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <span class="page-hero-label">事務代行サービス</span>
+            <h1 class="page-hero-title text-gradient">BACK OFFICE</h1>
+            <p class="page-hero-subtitle">プロフェッショナルなバックオフィスサポートで、<br class="pc-only">貴社のコア業務への集中を実現します。</p>
+        </div>
+        <div class="page-hero-deco" style="bottom: 10%; right: -5%;">OFFICE</div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="index.html">ホーム</a></li>
+                <li class="separator"><i class="fas fa-chevron-right"></i></li>
+                <li class="current">事務代行サービス</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Lead Section -->
+    <section class="lead-section">
+        <div class="container">
+            <div class="lead-text reveal">
+                <p>
+                    株式会社CHARMの事務代行サービスは、経理・会計から人事・労務、総務・庶務まで、<br class="pc-only">
+                    企業のバックオフィス業務を幅広くサポートいたします。<br class="pc-only">
+                    豊富な経験と専門知識を持つスタッフが、お客様の業務効率化とコスト削減を実現し、<br class="pc-only">
+                    本業に集中できる環境づくりをお手伝いします。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="service-categories">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Services</span>
+                <h2 class="section-title">サービス内容</h2>
+                <p class="section-desc">お客様のニーズに合わせた多彩なバックオフィスサービスをご提供いたします。</p>
+            </div>
+            <div class="service-cat-grid">
+                <!-- Card 1: 経理・会計業務 -->
+                <div class="service-cat-card reveal stagger-1">
+                    <div class="service-cat-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>経理・会計業務</h3>
+                    <p>日々の経理処理から決算業務まで、正確かつ迅速にサポート。財務状況の可視化を通じて経営判断を支援します。</p>
+                    <ul class="service-cat-list">
+                        <li><i class="fas fa-check-circle"></i>仕訳入力・帳簿記帳</li>
+                        <li><i class="fas fa-check-circle"></i>売掛金・買掛金管理</li>
+                        <li><i class="fas fa-check-circle"></i>請求書発行・入金確認</li>
+                        <li><i class="fas fa-check-circle"></i>月次・年次決算サポート</li>
+                        <li><i class="fas fa-check-circle"></i>経費精算処理</li>
+                    </ul>
+                </div>
+                <!-- Card 2: 人事・労務管理 -->
+                <div class="service-cat-card reveal stagger-2">
+                    <div class="service-cat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>人事・労務管理</h3>
+                    <p>従業員の入退社手続きから給与計算、社会保険関連まで、人事・労務に関する業務を包括的に代行します。</p>
+                    <ul class="service-cat-list">
+                        <li><i class="fas fa-check-circle"></i>給与計算・賞与計算</li>
+                        <li><i class="fas fa-check-circle"></i>社会保険・労働保険手続き</li>
+                        <li><i class="fas fa-check-circle"></i>入退社手続き管理</li>
+                        <li><i class="fas fa-check-circle"></i>勤怠管理サポート</li>
+                        <li><i class="fas fa-check-circle"></i>年末調整業務</li>
+                    </ul>
+                </div>
+                <!-- Card 3: 総務・庶務サポート -->
+                <div class="service-cat-card reveal stagger-3">
+                    <div class="service-cat-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>総務・庶務サポート</h3>
+                    <p>オフィス運営に欠かせない総務・庶務業務を代行。備品管理から文書管理まで、円滑な業務環境を維持します。</p>
+                    <ul class="service-cat-list">
+                        <li><i class="fas fa-check-circle"></i>備品・消耗品管理</li>
+                        <li><i class="fas fa-check-circle"></i>文書・契約書管理</li>
+                        <li><i class="fas fa-check-circle"></i>電話・メール対応</li>
+                        <li><i class="fas fa-check-circle"></i>来客対応・スケジュール調整</li>
+                        <li><i class="fas fa-check-circle"></i>社内イベント企画・運営</li>
+                    </ul>
+                </div>
+                <!-- Card 4: データ入力・書類作成 -->
+                <div class="service-cat-card reveal stagger-4">
+                    <div class="service-cat-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>データ入力・書類作成</h3>
+                    <p>各種データの入力作業からビジネス文書の作成まで、正確性とスピードを両立したサービスを提供します。</p>
+                    <ul class="service-cat-list">
+                        <li><i class="fas fa-check-circle"></i>各種データ入力・整理</li>
+                        <li><i class="fas fa-check-circle"></i>Excel・Wordによる資料作成</li>
+                        <li><i class="fas fa-check-circle"></i>プレゼン資料作成</li>
+                        <li><i class="fas fa-check-circle"></i>議事録・報告書作成</li>
+                        <li><i class="fas fa-check-circle"></i>データベース管理・更新</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-section">
+        <div class="grid-pattern"></div>
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Why Choose Us</span>
+                <h2 class="section-title">CHARMが選ばれる理由</h2>
+                <p class="section-desc">高品質なサービスと柔軟な対応力で、お客様のビジネスを力強くサポートします。</p>
+            </div>
+            <div class="why-grid">
+                <!-- Column 1: コスト削減 -->
+                <div class="why-card reveal stagger-1">
+                    <div class="why-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="why-number">50<span style="font-size: 28px;">%</span></div>
+                    <h3>コスト削減</h3>
+                    <p>正社員を雇用する場合と比較して、最大50%のコスト削減が可能です。採用・教育コストも不要で、必要な時に必要な分だけご利用いただけます。</p>
+                </div>
+                <!-- Column 2: 専門スタッフ -->
+                <div class="why-card reveal stagger-2">
+                    <div class="why-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="why-number">Pro</div>
+                    <h3>専門スタッフ</h3>
+                    <p>経理・人事・総務の各分野に精通した経験豊富な専門スタッフが対応。高い品質と正確性でお客様の業務をサポートいたします。</p>
+                </div>
+                <!-- Column 3: 柔軟な対応 -->
+                <div class="why-card reveal stagger-3">
+                    <div class="why-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <div class="why-number">24/7</div>
+                    <h3>柔軟な対応</h3>
+                    <p>業務量の増減に合わせてサービス内容を柔軟に調整可能。繁忙期のスポット対応から継続的なサポートまで、お客様のニーズに寄り添います。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Pricing</span>
+                <h2 class="section-title">料金プラン</h2>
+                <p class="section-desc">お客様の規模やニーズに合わせて、最適なプランをお選びいただけます。</p>
+            </div>
+            <div class="pricing-grid">
+                <!-- Plan 1: ライトプラン -->
+                <div class="pricing-card reveal stagger-1">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">ライトプラン</h3>
+                        <div class="pricing-price">月額 50,000円〜</div>
+                        <div class="pricing-note">小規模事業者向け</div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i>月間稼働時間: 20時間</li>
+                            <li><i class="fas fa-check"></i>経理基本業務</li>
+                            <li><i class="fas fa-check"></i>データ入力・整理</li>
+                            <li><i class="fas fa-check"></i>請求書発行サポート</li>
+                            <li><i class="fas fa-check"></i>メール対応</li>
+                            <li><i class="fas fa-xmark"></i>給与計算</li>
+                            <li><i class="fas fa-xmark"></i>社会保険手続き</li>
+                            <li><i class="fas fa-xmark"></i>専任担当者</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="contact.html" class="btn btn-outline">お問い合わせ</a>
+                    </div>
+                </div>
+                <!-- Plan 2: スタンダードプラン -->
+                <div class="pricing-card featured reveal stagger-2">
+                    <div class="pricing-badge">おすすめ</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">スタンダードプラン</h3>
+                        <div class="pricing-price">月額 120,000円〜</div>
+                        <div class="pricing-note">中小企業向け</div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i>月間稼働時間: 50時間</li>
+                            <li><i class="fas fa-check"></i>経理・会計業務全般</li>
+                            <li><i class="fas fa-check"></i>給与計算・年末調整</li>
+                            <li><i class="fas fa-check"></i>社会保険手続き</li>
+                            <li><i class="fas fa-check"></i>データ入力・書類作成</li>
+                            <li><i class="fas fa-check"></i>電話・メール対応</li>
+                            <li><i class="fas fa-check"></i>専任担当者</li>
+                            <li><i class="fas fa-xmark"></i>総務・庶務フルサポート</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="contact.html" class="btn btn-primary">お問い合わせ</a>
+                    </div>
+                </div>
+                <!-- Plan 3: プレミアムプラン -->
+                <div class="pricing-card reveal stagger-3">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">プレミアムプラン</h3>
+                        <div class="pricing-price">月額 250,000円〜</div>
+                        <div class="pricing-note">フルサポート対応</div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i>月間稼働時間: 無制限</li>
+                            <li><i class="fas fa-check"></i>経理・会計・決算業務</li>
+                            <li><i class="fas fa-check"></i>人事・労務フル対応</li>
+                            <li><i class="fas fa-check"></i>総務・庶務フルサポート</li>
+                            <li><i class="fas fa-check"></i>データ入力・書類作成</li>
+                            <li><i class="fas fa-check"></i>専任チーム体制</li>
+                            <li><i class="fas fa-check"></i>月次レポート提出</li>
+                            <li><i class="fas fa-check"></i>業務改善提案</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="contact.html" class="btn btn-outline">お問い合わせ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">FAQ</span>
+                <h2 class="section-title">よくあるご質問</h2>
+                <p class="section-desc">事務代行サービスに関するよくあるご質問をまとめました。</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item reveal stagger-1">
+                    <div class="faq-question">
+                        <span>どのような業種の企業に対応していますか？</span>
+                        <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>業種・業界を問わず幅広く対応しております。IT、製造業、サービス業、小売業、飲食業など、さまざまな業界のお客様にご利用いただいております。業界特有の慣行やルールにも精通したスタッフが対応いたしますので、安心してお任せください。</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal stagger-2">
+                    <div class="faq-question">
+                        <span>契約期間の縛りはありますか？</span>
+                        <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>最低契約期間は1ヶ月からとなっており、柔軟に対応いたします。繁忙期のみのスポット利用や、長期的な継続契約など、お客様のご要望に合わせてプランをカスタマイズいただけます。解約の際は前月末までにご連絡いただければ、翌月末での解約が可能です。</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal stagger-3">
+                    <div class="faq-question">
+                        <span>機密情報の取り扱いはどうなっていますか？</span>
+                        <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>お客様の機密情報の保護を最優先に考えております。業務開始前に秘密保持契約（NDA）を締結し、情報管理に関する社内教育を徹底しております。データは暗号化された環境で管理し、アクセス権限を厳格に設定しています。</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal stagger-4">
+                    <div class="faq-question">
+                        <span>サービス開始までの流れを教えてください。</span>
+                        <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>まずは無料のヒアリングにて、現在の業務内容や課題をお伺いします。その後、最適なプランとお見積りをご提案いたします。ご契約後、業務引き継ぎ期間（通常1〜2週間）を経て本格稼働となります。お問い合わせから最短2週間でサービスを開始いただけます。</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal stagger-5">
+                    <div class="faq-question">
+                        <span>途中でプラン変更は可能ですか？</span>
+                        <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>はい、月単位でプランの変更が可能です。業務量の増減や新たな業務ニーズの発生に合わせて、柔軟にプランをアップグレード・ダウングレードいただけます。変更のご希望は前月15日までにお知らせいただければ、翌月から新プランを適用いたします。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content reveal">
+            <h2 class="cta-title">バックオフィスのお悩み、<br class="pc-only">CHARMにお任せください。</h2>
+            <p class="cta-text">まずは無料相談から。貴社の課題をお聞かせください。<br class="pc-only">最適なプランをご提案いたします。</p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="contact.html" class="btn btn-white btn-lg btn-arrow">無料相談はこちら <span class="arrow">→</span></a>
+                <a href="tel:052-990-0362" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,0.4); color: var(--white);">
+                    <i class="fas fa-phone"></i> 052-990-0362
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <!-- Column 1: Company Info -->
+                    <div class="footer-brand">
+                        <div class="footer-logo">CHARM</div>
+                        <p>太陽光事業と事務代行サービスを通じて、お客様のビジネスと持続可能な社会の実現に貢献します。</p>
+                    </div>
+                    <!-- Column 2: Service Links -->
+                    <div>
+                        <h4 class="footer-heading">サービス</h4>
+                        <ul class="footer-links">
+                            <li><a href="solar.html">太陽光事業</a></li>
+                            <li><a href="backoffice.html">事務代行サービス</a></li>
+                            <li><a href="works.html">実績紹介</a></li>
+                        </ul>
+                    </div>
+                    <!-- Column 3: Company Links -->
+                    <div>
+                        <h4 class="footer-heading">企業情報</h4>
+                        <ul class="footer-links">
+                            <li><a href="about.html">会社概要</a></li>
+                            <li><a href="philosophy.html">企業理念</a></li>
+                            <li><a href="news.html">お知らせ</a></li>
+                            <li><a href="recruit.html">採用情報</a></li>
+                        </ul>
+                    </div>
+                    <!-- Column 4: Contact -->
+                    <div>
+                        <h4 class="footer-heading">お問い合わせ</h4>
+                        <div class="footer-contact-item">
+                            <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                            <span>〒460-0003<br>名古屋市中区錦三丁目５番３０号<br>三晃錦ビル４Ｆ</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <span class="icon"><i class="fas fa-phone"></i></span>
+                            <span>052-990-0362</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <span class="icon"><i class="fas fa-envelope"></i></span>
+                            <span><a href="contact.html">お問い合わせフォーム</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-inner">
+                    <div class="copyright">&copy; 2025 CHARM Corporation. All rights reserved.</div>
+                    <div class="footer-bottom-links">
+                        <a href="#">プライバシーポリシー</a>
+                        <a href="#">サイトマップ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

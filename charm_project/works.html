@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>実績紹介 | 株式会社CHARM - 太陽光事業・事務代行サービス</title>
+    <meta name="description" content="株式会社CHARMの実績紹介。太陽光発電システム導入や事務代行サービスの実績をご紹介します。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@700;800;900&family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ========== Works Page Specific Styles ========== */
+
+        /* --- Project Showcase Grid --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-100);
+            overflow: hidden;
+            transition: all var(--transition-slow);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .project-card:hover .project-image::after {
+            opacity: 1;
+        }
+
+        .project-card:hover .project-image-overlay {
+            opacity: 1;
+        }
+
+        .project-image {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .project-image-bg {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover .project-image-bg {
+            transform: scale(1.08);
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(74, 144, 164, 0.3), rgba(123, 201, 166, 0.3));
+            opacity: 0;
+            transition: opacity var(--transition-slow);
+        }
+
+        .project-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity var(--transition-slow);
+        }
+
+        .project-image-overlay .btn-view {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary);
+            border-radius: var(--radius-full);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(10px);
+            transition: all var(--transition-normal);
+        }
+
+        .project-card:hover .project-image-overlay .btn-view {
+            transform: translateY(0);
+        }
+
+        .project-category {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 3;
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .project-category.solar {
+            background: rgba(74, 144, 164, 0.9);
+            color: var(--white);
+        }
+
+        .project-category.backoffice {
+            background: rgba(123, 201, 166, 0.9);
+            color: var(--white);
+        }
+
+        .project-body {
+            padding: 28px 28px 32px;
+        }
+
+        .project-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .project-desc {
+            font-size: 14px;
+            color: var(--gray-500);
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .project-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .project-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--gray-400);
+        }
+
+        .project-meta-item i {
+            color: var(--primary);
+            font-size: 14px;
+        }
+
+        /* --- Gradient Placeholders for project images --- */
+        .gradient-1 {
+            background: linear-gradient(135deg, #4A90A4 0%, #7BC9A6 50%, #C9E4F7 100%);
+        }
+
+        .gradient-2 {
+            background: linear-gradient(135deg, #7BC9A6 0%, #D4A574 50%, #E8F5F7 100%);
+        }
+
+        .gradient-3 {
+            background: linear-gradient(135deg, #2C5F6F 0%, #4A90A4 50%, #7BC9A6 100%);
+        }
+
+        .gradient-4 {
+            background: linear-gradient(135deg, #E8A598 0%, #D4A574 50%, #7BC9A6 100%);
+        }
+
+        .gradient-5 {
+            background: linear-gradient(135deg, #6BB0C4 0%, #4A90A4 50%, #2C5F6F 100%);
+        }
+
+        .gradient-6 {
+            background: linear-gradient(135deg, #5DB88E 0%, #7BC9A6 50%, #C9E4F7 100%);
+        }
+
+        /* --- Testimonial Section --- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-100);
+            padding: 40px 36px;
+            position: relative;
+            transition: all var(--transition-slow);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+
+        .testimonial-card:hover::before {
+            opacity: 1;
+        }
+
+        .testimonial-quote-icon {
+            font-size: 48px;
+            color: var(--primary);
+            opacity: 0.12;
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .testimonial-text {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 2;
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding-top: 24px;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .testimonial-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--light), #F0F8F0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .testimonial-avatar i {
+            font-size: 22px;
+            color: var(--primary);
+        }
+
+        .testimonial-author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-author-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 2px;
+        }
+
+        .testimonial-author-role {
+            font-size: 13px;
+            color: var(--gray-400);
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-rating i {
+            color: #F5C542;
+            font-size: 14px;
+        }
+
+        /* --- Counter Section Background --- */
+        .counter-section {
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .counter-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(74, 144, 164, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        .counter-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--gray-100);
+            box-shadow: var(--shadow-lg);
+            padding: 50px 30px;
+        }
+
+        .counter-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--light), #F0F8F0);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+            color: var(--primary);
+            box-shadow: 0 6px 20px rgba(74, 144, 164, 0.1);
+        }
+
+        /* --- Filter Buttons (decorative) --- */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 28px;
+            border-radius: var(--radius-full);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border: 2px solid var(--gray-200);
+            background: var(--white);
+            color: var(--gray-600);
+            transition: all var(--transition-normal);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--light);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            border-color: transparent;
+            box-shadow: var(--shadow-primary);
+        }
+
+        /* --- Responsive for Works Page --- */
+        @media (max-width: 1200px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .project-image {
+                height: 200px;
+            }
+
+            .project-body {
+                padding: 24px 20px 28px;
+            }
+
+            .testimonial-card {
+                padding: 32px 24px;
+            }
+
+            .filter-buttons {
+                margin-bottom: 40px;
+            }
+
+            .filter-btn {
+                padding: 8px 20px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader-logo text-gradient">CHARM</div>
+        <div class="loader-bar-track">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Background Decoration -->
+    <div class="bg-decoration">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="header-logo"><a href="index.html">CHARM</a></div>
+            <nav class="nav-desktop">
+                <a href="index.html">ホーム</a>
+                <a href="about.html">会社概要</a>
+                <a href="philosophy.html">企業理念</a>
+                <a href="solar.html">太陽光事業</a>
+                <a href="backoffice.html">事務代行</a>
+                <a href="works.html" class="active">実績紹介</a>
+                <a href="news.html">お知らせ</a>
+                <a href="recruit.html">採用情報</a>
+                <a href="contact.html" class="nav-cta">お問い合わせ</a>
+            </nav>
+            <button class="menu-toggle" aria-label="メニューを開く">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <nav class="nav-mobile">
+            <a href="index.html">ホーム</a>
+            <a href="about.html">会社概要</a>
+            <a href="philosophy.html">企業理念</a>
+            <a href="solar.html">太陽光事業</a>
+            <a href="backoffice.html">事務代行</a>
+            <a href="works.html">実績紹介</a>
+            <a href="news.html">お知らせ</a>
+            <a href="recruit.html">採用情報</a>
+            <a href="contact.html">お問い合わせ</a>
+        </nav>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <span class="page-hero-label">実績紹介</span>
+            <h1 class="page-hero-title text-gradient-dark">WORKS</h1>
+            <p class="page-hero-subtitle">お客様と共に歩んだ確かな実績。太陽光事業と事務代行の導入事例をご紹介します。</p>
+        </div>
+        <div class="page-hero-deco" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">WORKS</div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="index.html"><i class="fas fa-home"></i> ホーム</a></li>
+                <li class="separator"><i class="fas fa-chevron-right"></i></li>
+                <li class="current">実績紹介</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Counter Stats Section -->
+    <section class="section counter-section">
+        <div class="container">
+            <div class="counter-grid reveal">
+                <div class="counter-item counter-card">
+                    <div class="counter-icon">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <div class="counter-number text-gradient">
+                        <span data-count="500">0</span><span class="counter-suffix">+</span>
+                    </div>
+                    <div class="counter-label">累計導入件数</div>
+                </div>
+                <div class="counter-item counter-card">
+                    <div class="counter-icon">
+                        <i class="fas fa-face-smile"></i>
+                    </div>
+                    <div class="counter-number text-gradient">
+                        <span data-count="98">0</span><span class="counter-suffix">%</span>
+                    </div>
+                    <div class="counter-label">顧客満足度</div>
+                </div>
+                <div class="counter-item counter-card">
+                    <div class="counter-icon">
+                        <i class="fas fa-map-location-dot"></i>
+                    </div>
+                    <div class="counter-number text-gradient">
+                        <span data-count="47">0</span><span class="counter-suffix"></span>
+                    </div>
+                    <div class="counter-label">対応エリア 全国</div>
+                </div>
+                <div class="counter-item counter-card">
+                    <div class="counter-icon">
+                        <i class="fas fa-arrow-rotate-left"></i>
+                    </div>
+                    <div class="counter-number text-gradient">
+                        <span data-count="85">0</span><span class="counter-suffix">%</span>
+                    </div>
+                    <div class="counter-label">リピート率</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Showcase Section -->
+    <section class="section section-bg-light" id="projects">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Project Showcase</span>
+                <h2 class="section-title">プロジェクト実績</h2>
+                <p class="section-desc">太陽光発電システムの導入からバックオフィス業務の改革まで、多彩な実績でお客様の課題解決に貢献しています。</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons reveal">
+                <button class="filter-btn active" data-filter="all">すべて</button>
+                <button class="filter-btn" data-filter="solar">太陽光事業</button>
+                <button class="filter-btn" data-filter="backoffice">事務代行</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="projects-grid">
+
+                <!-- Project 1 -->
+                <div class="project-card reveal stagger-1">
+                    <div class="project-image">
+                        <div class="project-image-bg gradient-1"></div>
+                        <span class="project-category solar"><i class="fas fa-sun"></i> 太陽光</span>
+                        <div class="project-image-overlay">
+                            <span class="btn-view"><i class="fas fa-arrow-right"></i> 詳細を見る</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">名古屋市商業施設 太陽光発電システム導入</h3>
+                        <p class="project-desc">大型商業施設の屋上に500kW規模の太陽光パネルを設置。年間電力コストを約30%削減し、施設全体のCO2排出量の大幅な削減を実現しました。</p>
+                        <div class="project-meta">
+                            <div class="project-meta-item">
+                                <i class="fas fa-location-dot"></i>
+                                <span>愛知県名古屋市</span>
+                            </div>
+                            <div class="project-meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>2024年</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card reveal stagger-2">
+                    <div class="project-image">
+                        <div class="project-image-bg gradient-2"></div>
+                        <span class="project-category backoffice"><i class="fas fa-briefcase"></i> 事務代行</span>
+                        <div class="project-image-overlay">
+                            <span class="btn-view"><i class="fas fa-arrow-right"></i> 詳細を見る</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">製造業A社 バックオフィス業務改革</h3>
+                        <p class="project-desc">経理・人事・総務業務を包括的に代行。業務プロセスの見直しとデジタル化により、管理部門の工数を約40%削減し、コア業務への集中を支援しました。</p>
+                        <div class="project-meta">
+                            <div class="project-meta-item">
+                                <i class="fas fa-location-dot"></i>
+                                <span>愛知県豊田市</span>
+                            </div>
+                            <div class="project-meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>2024年</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card reveal stagger-3">
+                    <div class="project-image">
+                        <div class="project-image-bg gradient-3"></div>
+                        <span class="project-category solar"><i class="fas fa-sun"></i> 太陽光</span>
+                        <div class="project-image-overlay">
+                            <span class="btn-view"><i class="fas fa-arrow-right"></i> 詳細を見る</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">三重県工場 自家消費型太陽光システム</h3>
+                        <p class="project-desc">製造工場の屋根全面に自家消費型太陽光発電を導入。電力の自給率を向上させ、年間約800万円のコスト削減とBCP対策を同時に実現しました。</p>
+                        <div class="project-meta">
+                            <div class="project-meta-item">
+                                <i class="fas fa-location-dot"></i>
+                                <span>三重県四日市市</span>
+                            </div>
+                            <div class="project-meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>2023年</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card reveal stagger-4">
+                    <div class="project-image">
+                        <div class="project-image-bg gradient-4"></div>
+                        <span class="project-category backoffice"><i class="fas fa-briefcase"></i> 事務代行</span>
+                        <div class="project-image-overlay">
+                            <span class="btn-view"><i class="fas fa-arrow-right"></i> 詳細を見る</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">IT企業B社 経理業務アウトソーシング</h3>
+                        <p class="project-desc">急成長するIT企業の経理業務を全面サポート。請求書発行から月次決算まで一貫して対応し、正確かつ迅速な財務管理体制を構築しました。</p>
+                        <div class="project-meta">
+                            <div class="project-meta-item">
+                                <i class="fas fa-location-dot"></i>
+                                <span>愛知県名古屋市</span>
+                            </div>
+                            <div class="project-meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>2023年</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card reveal stagger-5">
+                    <div class="project-image">
+                        <div class="project-image-bg gradient-5"></div>
+                        <span class="project-category solar"><i class="fas fa-sun"></i> 太陽光</span>
+                        <div class="project-image-overlay">
+                            <span class="btn-view"><i class="fas fa-arrow-right"></i> 詳細を見る</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">岐阜県農業法人 ソーラーシェアリング</h3>
+                        <p class="project-desc">農地の上部に太陽光パネルを設置するソーラーシェアリングを導入。農業と発電の両立を実現し、農家の収益源の多角化に貢献しました。</p>
+                        <div class="project-meta">
+                            <div class="project-meta-item">
+                                <i class="fas fa-location-dot"></i>
+                                <span>岐阜県各務原市</span>
+                            </div>
+                            <div class="project-meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>2023年</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card reveal stagger-6">
+                    <div class="project-image">
+                        <div class="project-image-bg gradient-6"></div>
+                        <span class="project-category backoffice"><i class="fas fa-briefcase"></i> 事務代行</span>
+                        <div class="project-image-overlay">
+                            <span class="btn-view"><i class="fas fa-arrow-right"></i> 詳細を見る</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">医療法人C会 総務・人事業務支援</h3>
+                        <p class="project-desc">複数クリニックを運営する医療法人の総務・人事業務を代行。スタッフの勤怠管理や採用業務を最適化し、医療サービスの品質向上に寄与しました。</p>
+                        <div class="project-meta">
+                            <div class="project-meta-item">
+                                <i class="fas fa-location-dot"></i>
+                                <span>愛知県春日井市</span>
+                            </div>
+                            <div class="project-meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>2024年</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Testimonials Section -->
+    <section class="section section-bg-gradient" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title">お客様の声</h2>
+                <p class="section-desc">CHARMのサービスをご利用いただいたお客様からの声をご紹介します。</p>
+            </div>
+
+            <div class="testimonials-grid">
+
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card reveal stagger-1">
+                    <span class="testimonial-quote-icon">"</span>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">太陽光発電の導入について相談したところ、初期コストの試算から設置後のメンテナンスまで丁寧にご説明いただきました。導入後は電力コストが大幅に下がり、非常に満足しています。</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="testimonial-author-info">
+                            <span class="testimonial-author-name">A社様</span>
+                            <span class="testimonial-author-role">商業施設運営 / 名古屋市</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card reveal stagger-2">
+                    <span class="testimonial-quote-icon">"</span>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">バックオフィス業務を依頼してから、経理や人事にかかる時間が大幅に減りました。本業に集中できるようになったことで売上も向上し、CHARMさんには本当に感謝しています。</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <div class="testimonial-author-info">
+                            <span class="testimonial-author-name">B社様</span>
+                            <span class="testimonial-author-role">製造業 / 豊田市</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card reveal stagger-3">
+                    <span class="testimonial-quote-icon">"</span>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-stroke"></i>
+                    </div>
+                    <p class="testimonial-text">ソーラーシェアリングの提案は目から鱗でした。農業を続けながら安定した副収入が得られるようになり、後継者問題の解決にもつながりました。提案力と実行力が素晴らしいです。</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="testimonial-author-info">
+                            <span class="testimonial-author-name">C社様</span>
+                            <span class="testimonial-author-role">農業法人 / 岐阜県</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content reveal">
+            <h2 class="cta-title">お気軽にご相談ください</h2>
+            <p class="cta-text">太陽光発電の導入やバックオフィス業務の効率化など、<br class="pc-only">お客様の課題に最適なソリューションをご提案いたします。</p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="contact.html" class="btn btn-white btn-lg btn-arrow">
+                    お問い合わせ <span class="arrow">→</span>
+                </a>
+                <a href="tel:052-990-0362" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,0.4); color: #fff;">
+                    <i class="fas fa-phone"></i> 052-990-0362
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="footer-logo">CHARM</div>
+                        <p>太陽の力で、未来を支える。<br>クリーンエネルギーとバックオフィス支援で、<br>お客様のビジネスに貢献します。</p>
+                    </div>
+                    <div class="footer-nav">
+                        <h4 class="footer-heading">事業内容</h4>
+                        <ul class="footer-links">
+                            <li><a href="solar.html">太陽光事業</a></li>
+                            <li><a href="backoffice.html">事務代行サービス</a></li>
+                            <li><a href="works.html">実績紹介</a></li>
+                            <li><a href="news.html">お知らせ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav">
+                        <h4 class="footer-heading">企業情報</h4>
+                        <ul class="footer-links">
+                            <li><a href="about.html">会社概要</a></li>
+                            <li><a href="philosophy.html">企業理念</a></li>
+                            <li><a href="recruit.html">採用情報</a></li>
+                            <li><a href="contact.html">お問い合わせ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact">
+                        <h4 class="footer-heading">お問い合わせ</h4>
+                        <div class="footer-contact-item">
+                            <span class="icon"><i class="fas fa-location-dot"></i></span>
+                            <span>〒460-0003<br>名古屋市中区錦三丁目５番３０号<br>三晃錦ビル４Ｆ</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <span class="icon"><i class="fas fa-phone"></i></span>
+                            <span>052-990-0362</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-inner">
+                    <p class="copyright">&copy; 2025 CHARM Corporation. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">プライバシーポリシー</a>
+                        <a href="#">サイトマップ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        /* ========== Filter Buttons Interaction ========== */
+        (function () {
+            var filterBtns = document.querySelectorAll('.filter-btn');
+            var projectCards = document.querySelectorAll('.project-card');
+
+            filterBtns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    // Update active button
+                    filterBtns.forEach(function (b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+
+                    var filter = btn.dataset.filter;
+
+                    projectCards.forEach(function (card) {
+                        var category = card.querySelector('.project-category');
+                        var isSolar = category && category.classList.contains('solar');
+                        var isBackoffice = category && category.classList.contains('backoffice');
+
+                        if (filter === 'all') {
+                            card.style.display = '';
+                            setTimeout(function () {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else if (filter === 'solar' && isSolar) {
+                            card.style.display = '';
+                            setTimeout(function () {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else if (filter === 'backoffice' && isBackoffice) {
+                            card.style.display = '';
+                            setTimeout(function () {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(function () {
+                                card.style.display = 'none';
+                            }, 400);
+                        }
+                    });
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>

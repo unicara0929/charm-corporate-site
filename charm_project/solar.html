@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太陽光事業 - 株式会社CHARM</title>
+    <meta name="description" content="株式会社CHARMの太陽光事業。太陽光発電システムの設計・施工からメンテナンス、コンサルティングまでトータルサポート。クリーンエネルギーで持続可能な未来を。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ---------- Solar Page Specific Styles ---------- */
+
+        /* Lead Section */
+        .lead-section {
+            padding: 100px 60px 80px;
+            position: relative;
+        }
+
+        .lead-text {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 20px;
+            line-height: 2.2;
+            color: var(--gray-600);
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .lead-text strong {
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        /* Service Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 50px 45px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-100);
+            transition: all var(--transition-slow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition-slow);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .feature-card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--light), #F0F8F0);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 8px 24px rgba(74, 144, 164, 0.12);
+            transition: all var(--transition-slow);
+            color: var(--primary);
+        }
+
+        .feature-card:hover .feature-card-icon {
+            transform: scale(1.1) rotateY(180deg);
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            color: var(--gray-500);
+            line-height: 2;
+        }
+
+        /* Service Flow Section */
+        .flow-section {
+            background: linear-gradient(135deg, var(--light) 0%, #F0F8F0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flow-section .grid-pattern {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(74, 144, 164, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: moveGrid 30s linear infinite;
+            pointer-events: none;
+        }
+
+        .flow-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .flow-steps {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 0;
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .flow-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 0 10px;
+        }
+
+        .flow-step-number {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 30px rgba(74, 144, 164, 0.3);
+            transition: all var(--transition-normal);
+        }
+
+        .flow-step:hover .flow-step-number {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(74, 144, 164, 0.4);
+        }
+
+        .flow-step-number span {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .flow-step-icon {
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .flow-step h4 {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .flow-step p {
+            font-size: 13px;
+            color: var(--gray-500);
+            line-height: 1.8;
+        }
+
+        /* Connector line between steps */
+        .flow-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 36px;
+            left: calc(50% + 36px);
+            width: calc(100% - 72px);
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        .flow-step:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: -6px;
+            width: 12px;
+            height: 12px;
+            border-top: 3px solid var(--secondary);
+            border-right: 3px solid var(--secondary);
+            transform: rotate(45deg);
+            z-index: 2;
+            opacity: 0.4;
+        }
+
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-100);
+            transition: all var(--transition-slow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform var(--transition-slow);
+        }
+
+        .benefit-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .benefit-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 28px;
+            background: linear-gradient(135deg, var(--light), #EDF8F0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: var(--primary);
+            box-shadow: 0 8px 24px rgba(74, 144, 164, 0.12);
+            transition: all var(--transition-slow);
+        }
+
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.1);
+            box-shadow: 0 12px 32px rgba(74, 144, 164, 0.2);
+        }
+
+        .benefit-card h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .benefit-card p {
+            font-size: 15px;
+            color: var(--gray-500);
+            line-height: 2;
+        }
+
+        /* FAQ Section */
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .lead-section {
+                padding: 80px 40px 60px;
+            }
+
+            .features-grid {
+                gap: 30px;
+            }
+
+            .flow-steps {
+                gap: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .lead-section {
+                padding: 60px 24px 40px;
+            }
+
+            .lead-text {
+                font-size: 16px;
+                line-height: 2;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .feature-card {
+                padding: 36px 30px;
+            }
+
+            .feature-card h3 {
+                font-size: 19px;
+            }
+
+            .flow-steps {
+                flex-direction: column;
+                align-items: center;
+                gap: 32px;
+            }
+
+            .flow-step {
+                width: 100%;
+                max-width: 320px;
+                padding: 0;
+            }
+
+            .flow-step:not(:last-child)::after {
+                top: auto;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -20px;
+                width: 3px;
+                height: 20px;
+            }
+
+            .flow-step:not(:last-child)::before {
+                top: auto;
+                bottom: -24px;
+                right: auto;
+                left: calc(50% - 6px);
+                transform: rotate(135deg);
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .benefit-card {
+                padding: 40px 30px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 320px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .feature-card {
+                padding: 30px 24px;
+            }
+
+            .benefit-card {
+                padding: 36px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader-logo text-gradient">CHARM</div>
+        <div class="loader-bar-track">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Background Decoration -->
+    <div class="bg-decoration">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="header-logo"><a href="index.html">CHARM</a></div>
+            <nav class="nav-desktop">
+                <a href="index.html">ホーム</a>
+                <a href="about.html">会社概要</a>
+                <a href="philosophy.html">企業理念</a>
+                <a href="solar.html" class="active">太陽光事業</a>
+                <a href="backoffice.html">事務代行</a>
+                <a href="works.html">実績紹介</a>
+                <a href="news.html">お知らせ</a>
+                <a href="recruit.html">採用情報</a>
+                <a href="contact.html" class="nav-cta">お問い合わせ</a>
+            </nav>
+            <button class="menu-toggle" aria-label="メニュー">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-mobile">
+                <a href="index.html">ホーム</a>
+                <a href="about.html">会社概要</a>
+                <a href="philosophy.html">企業理念</a>
+                <a href="solar.html" class="active">太陽光事業</a>
+                <a href="backoffice.html">事務代行</a>
+                <a href="works.html">実績紹介</a>
+                <a href="news.html">お知らせ</a>
+                <a href="recruit.html">採用情報</a>
+                <a href="contact.html">お問い合わせ</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <span class="page-hero-label">太陽光事業</span>
+            <h1 class="page-hero-title text-gradient">SOLAR ENERGY</h1>
+            <p class="page-hero-subtitle">クリーンエネルギーの力で、持続可能な未来を創造する。<br class="pc-only">太陽光発電のトータルソリューションをご提供します。</p>
+        </div>
+        <div class="page-hero-deco" style="bottom: 10%; right: -5%;">SOLAR</div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="index.html">ホーム</a></li>
+                <li class="separator"><i class="fas fa-chevron-right"></i></li>
+                <li class="current">太陽光事業</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Lead Section -->
+    <div class="lead-section">
+        <div class="container">
+            <p class="lead-text reveal">
+                株式会社CHARMは、太陽光発電システムの設計・施工からメンテナンス、コンサルティングまで、<br class="pc-only">
+                <strong>ワンストップで対応する太陽光エネルギー事業</strong>を展開しています。<br class="pc-only">
+                再生可能エネルギーの普及を通じて、環境負荷の軽減と経済的なメリットの両立を実現し、<br class="pc-only">
+                お客様と社会の持続可能な発展に貢献してまいります。
+            </p>
+        </div>
+    </div>
+
+    <!-- Service Features -->
+    <section class="section section-bg-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Service</span>
+                <h2 class="section-title">サービス内容</h2>
+                <p class="section-desc">お客様のニーズに合わせた最適な太陽光発電ソリューションをご提案いたします。</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal stagger-1">
+                    <div class="feature-card-icon">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <h3>太陽光発電システムの設計・施工</h3>
+                    <p>住宅用から産業用まで、あらゆる規模の太陽光発電システムの設計・施工を行います。現地調査に基づく最適な設計プランを提案し、高品質な施工で安定した発電性能を実現します。豊富な実績と確かな技術力で、お客様の期待にお応えします。</p>
+                </div>
+                <div class="feature-card reveal stagger-2">
+                    <div class="feature-card-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <h3>メンテナンス・保守</h3>
+                    <p>設置後の定期点検や清掃、故障対応まで、太陽光発電システムの長期安定稼働をサポートします。発電量のモニタリングによる異常の早期発見や、パネル・パワーコンディショナーの定期メンテナンスで、最適な発電効率を維持します。</p>
+                </div>
+                <div class="feature-card reveal stagger-3">
+                    <div class="feature-card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>コンサルティング</h3>
+                    <p>太陽光発電の導入をご検討のお客様に、初期費用・投資回収シミュレーション、補助金・助成金の活用方法、最適なシステム構成のご提案など、専門スタッフが丁寧にコンサルティングいたします。導入前の不安を解消し、最適な判断をサポートします。</p>
+                </div>
+                <div class="feature-card reveal stagger-4">
+                    <div class="feature-card-icon">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <h3>蓄電池システム</h3>
+                    <p>太陽光発電と蓄電池を組み合わせることで、発電した電力を効率的に活用できます。余剰電力の蓄電による自家消費率の向上や、停電時の非常用電源としての活用など、エネルギーの自給自足をサポートする蓄電池ソリューションをご提供します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Flow -->
+    <section class="section flow-section">
+        <div class="grid-pattern"></div>
+        <div class="container flow-container">
+            <div class="section-header reveal">
+                <span class="section-label">Flow</span>
+                <h2 class="section-title">導入の流れ</h2>
+                <p class="section-desc">お問い合わせからアフターサポートまで、安心のトータルサポート体制で対応いたします。</p>
+            </div>
+            <div class="flow-steps">
+                <div class="flow-step reveal stagger-1">
+                    <div class="flow-step-number"><span>1</span></div>
+                    <i class="fas fa-comments flow-step-icon"></i>
+                    <h4>ご相談</h4>
+                    <p>お電話やメールにてお気軽にご相談ください。太陽光発電に関する疑問やご要望をお伺いします。</p>
+                </div>
+                <div class="flow-step reveal stagger-2">
+                    <div class="flow-step-number"><span>2</span></div>
+                    <i class="fas fa-search-location flow-step-icon"></i>
+                    <h4>現地調査</h4>
+                    <p>専門スタッフが設置予定場所を訪問し、屋根の状態や日照条件などを詳細に調査します。</p>
+                </div>
+                <div class="flow-step reveal stagger-3">
+                    <div class="flow-step-number"><span>3</span></div>
+                    <i class="fas fa-file-alt flow-step-icon"></i>
+                    <h4>ご提案</h4>
+                    <p>調査結果をもとに、最適なシステム構成と発電シミュレーション、お見積りをご提案します。</p>
+                </div>
+                <div class="flow-step reveal stagger-4">
+                    <div class="flow-step-number"><span>4</span></div>
+                    <i class="fas fa-hard-hat flow-step-icon"></i>
+                    <h4>施工</h4>
+                    <p>経験豊富な施工チームが安全かつ高品質な施工を実施。工期や進捗も丁寧にご報告します。</p>
+                </div>
+                <div class="flow-step reveal stagger-5">
+                    <div class="flow-step-number"><span>5</span></div>
+                    <i class="fas fa-headset flow-step-icon"></i>
+                    <h4>アフターサポート</h4>
+                    <p>稼働後も定期点検やモニタリングで長期安定運用をサポート。万全のアフター体制です。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Benefits</span>
+                <h2 class="section-title">導入のメリット</h2>
+                <p class="section-desc">太陽光発電の導入は、経済面・環境面の双方で大きなメリットがあります。</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card reveal stagger-1">
+                    <div class="benefit-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <h3>コスト削減</h3>
+                    <p>自家消費による電気代の大幅削減を実現。余剰電力の売電収入も見込め、投資回収後は長期にわたる経済的メリットを享受できます。初期費用も補助金の活用で抑えられます。</p>
+                </div>
+                <div class="benefit-card reveal stagger-2">
+                    <div class="benefit-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>環境貢献</h3>
+                    <p>CO2排出量の削減により、地球温暖化防止に直接貢献。企業のCSR活動やSDGsへの取り組みとしても高い評価を得られ、環境配慮型の経営を実現できます。</p>
+                </div>
+                <div class="benefit-card reveal stagger-3">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>安定収益</h3>
+                    <p>固定価格買取制度（FIT）を活用した安定的な売電収入が見込めます。太陽光パネルの耐用年数は25年以上と長く、長期間にわたり安定した収益を確保できます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section section-bg-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">FAQ</span>
+                <h2 class="section-title">よくあるご質問</h2>
+                <p class="section-desc">太陽光発電に関するよくあるご質問をまとめました。</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item reveal stagger-1">
+                    <div class="faq-question">
+                        <span>太陽光発電システムの設置にはどれくらいの期間がかかりますか？</span>
+                        <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>住宅用の場合、現地調査から設置完了まで通常1〜2ヶ月程度です。産業用の場合は規模により異なりますが、3〜6ヶ月程度が一般的です。お客様のスケジュールに合わせて柔軟に対応いたします。</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal stagger-2">
+                    <div class="faq-question">
+                        <span>設置費用はどれくらいかかりますか？</span>
+                        <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>設置費用は、システムの規模や設置環境によって異なります。無料でお見積りを作成いたしますので、まずはお気軽にご相談ください。補助金や助成金の活用により、初期費用を大幅に抑えることも可能です。</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal stagger-3">
+                    <div class="faq-question">
+                        <span>曇りや雨の日でも発電できますか？</span>
+                        <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>はい、曇りや雨の日でも発電は可能です。晴れの日に比べると発電量は低下しますが、散乱光でも発電を行います。年間を通じた発電量で投資回収シミュレーションを行いますので、天候の影響は計算に含まれています。</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal stagger-4">
+                    <div class="faq-question">
+                        <span>太陽光パネルの寿命はどれくらいですか？</span>
+                        <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>一般的に太陽光パネルの寿命は25〜30年以上と言われています。定期的なメンテナンスを行うことで、長期間にわたり安定した発電性能を維持できます。当社では充実したメンテナンスプランをご用意しています。</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal stagger-5">
+                    <div class="faq-question">
+                        <span>蓄電池と組み合わせるメリットは何ですか？</span>
+                        <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>蓄電池と組み合わせることで、昼間に発電した電力を夜間や曇天時に使用でき、自家消費率が大幅に向上します。また、災害時や停電時の非常用電源としても活用でき、エネルギーの安心・安全を高めることができます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2 class="cta-title">太陽光発電の導入をご検討の方へ</h2>
+                <p class="cta-text">
+                    まずはお気軽にご相談ください。専門スタッフが丁寧にお答えいたします。<br class="pc-only">
+                    無料の現地調査・お見積りも承っております。
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-white btn-lg btn-arrow">
+                        お問い合わせ <span class="arrow">&rarr;</span>
+                    </a>
+                    <a href="tel:052-990-0362" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,0.4); color: var(--white);">
+                        <i class="fas fa-phone"></i> 052-990-0362
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="footer-logo text-gradient">CHARM</div>
+                        <p>太陽光事業と事務代行サービスを通じて、<br>お客様と社会の持続可能な発展に貢献します。</p>
+                    </div>
+                    <div class="footer-nav">
+                        <h4 class="footer-heading">事業内容</h4>
+                        <ul class="footer-links">
+                            <li><a href="solar.html">太陽光事業</a></li>
+                            <li><a href="backoffice.html">事務代行</a></li>
+                            <li><a href="works.html">実績紹介</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav">
+                        <h4 class="footer-heading">企業情報</h4>
+                        <ul class="footer-links">
+                            <li><a href="about.html">会社概要</a></li>
+                            <li><a href="philosophy.html">企業理念</a></li>
+                            <li><a href="news.html">お知らせ</a></li>
+                            <li><a href="recruit.html">採用情報</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav">
+                        <h4 class="footer-heading">お問い合わせ</h4>
+                        <div class="footer-contact-item">
+                            <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                            <span>〒460-0003<br>名古屋市中区錦三丁目５番３０号<br>三晃錦ビル４Ｆ</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <span class="icon"><i class="fas fa-phone"></i></span>
+                            <span>052-990-0362</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-inner">
+                    <p class="copyright">&copy; 2025 CHARM Corporation. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">プライバシーポリシー</a>
+                        <a href="contact.html">お問い合わせ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Particles.js CDN -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>

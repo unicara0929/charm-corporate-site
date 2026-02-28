@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="株式会社CHARM - 太陽の力で、未来を支える。太陽光事業と事務代行サービスで企業の成長を支援します。名古屋市中区">
+    <meta name="keywords" content="太陽光発電, ソーラーパネル, 事務代行, バックオフィス, 名古屋, CHARM">
+    <meta name="format-detection" content="telephone=no">
+    <title>株式会社CHARM | 太陽の力で、未来を支える</title>
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Noto+Sans+JP:wght@400;700&family=Poppins:wght@700;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Homepage-specific Styles -->
+    <style>
+        /* ========================================
+           HERO SECTION
+        ======================================== */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #0a0a0a;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.3) saturate(1.2);
+            transform: scale(1.08);
+            transition: transform 10s ease-out;
+        }
+
+        .hero.is-visible .hero-bg img {
+            transform: scale(1.0);
+        }
+
+        .hero-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background:
+                linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(10, 10, 10, 0.35) 40%, rgba(74, 144, 164, 0.08) 100%),
+                linear-gradient(to bottom, rgba(10, 10, 10, 0.3) 0%, transparent 30%, transparent 70%, rgba(10, 10, 10, 0.95) 100%);
+        }
+
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+        }
+
+        .hero-watermark {
+            position: absolute;
+            bottom: -5%;
+            right: -5%;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(150px, 25vw, 400px);
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+            letter-spacing: -0.02em;
+            line-height: 1;
+            z-index: 3;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            padding: 0 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-badges {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: badgeFadeIn 0.8s ease forwards;
+        }
+
+        .hero-badge:nth-child(1) { animation-delay: 0.8s; }
+        .hero-badge:nth-child(2) { animation-delay: 1.0s; }
+        .hero-badge:nth-child(3) { animation-delay: 1.2s; }
+
+        .hero-badge i {
+            color: var(--primary);
+            font-size: 11px;
+        }
+
+        @keyframes badgeFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title-main {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(64px, 12vw, 160px);
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: -0.03em;
+            line-height: 0.9;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(60px);
+            animation: heroTitleIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+        }
+
+        .hero-title-main .char-accent {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes heroTitleIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-tagline {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: clamp(16px, 2.5vw, 28px);
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 0.15em;
+            margin-bottom: 16px;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: heroTitleIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+        }
+
+        .hero-subtitle {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: clamp(14px, 1.5vw, 18px);
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 48px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroTitleIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroTitleIn 1s cubic-bezier(0.16, 1, 0.3, 1) 1.1s forwards;
+        }
+
+        .hero-btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px 50px;
+            border-radius: 9999px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        .hero-btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.45);
+            transform: translateY(-3px);
+        }
+
+        .hero-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(74, 144, 164, 0.3), transparent);
+            z-index: 5;
+        }
+
+        /* Scroll Indicator */
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            opacity: 0;
+            animation: heroTitleIn 1s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
+        }
+
+        .hero-scroll-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, rgba(74, 144, 164, 0.6), transparent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-scroll-line::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--primary));
+            animation: scrollLineMove 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollLineMove {
+            0% { top: -100%; }
+            50% { top: 100%; }
+            100% { top: 100%; }
+        }
+
+        /* ========================================
+           SERVICES SECTION
+        ======================================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            position: relative;
+            padding: 56px 48px;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-card-decoration {
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            opacity: 0.06;
+            pointer-events: none;
+        }
+
+        .service-card-solar .service-card-decoration {
+            background: var(--primary);
+        }
+
+        .service-card-office .service-card-decoration {
+            background: var(--secondary);
+        }
+
+        .service-card-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            font-size: 28px;
+            position: relative;
+        }
+
+        .service-card-solar .service-card-icon {
+            background: linear-gradient(135deg, rgba(74, 144, 164, 0.12), rgba(123, 201, 166, 0.12));
+            color: var(--primary);
+        }
+
+        .service-card-office .service-card-icon {
+            background: linear-gradient(135deg, rgba(123, 201, 166, 0.12), rgba(74, 144, 164, 0.12));
+            color: var(--secondary-dark);
+        }
+
+        .service-card-number {
+            position: absolute;
+            top: 32px;
+            right: 40px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 80px;
+            font-weight: 900;
+            line-height: 1;
+            opacity: 0.04;
+            pointer-events: none;
+            color: var(--dark);
+        }
+
+        .service-card-title {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .service-card-title-en {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-card-desc {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 15px;
+            color: var(--gray-500);
+            line-height: 1.9;
+            margin-bottom: 32px;
+        }
+
+        .service-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+
+        .service-card-solar .service-card-link {
+            color: var(--primary);
+        }
+
+        .service-card-office .service-card-link {
+            color: var(--secondary-dark);
+        }
+
+        .service-card-link:hover {
+            gap: 14px;
+        }
+
+        .service-card-link i {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card-link:hover i {
+            transform: translateX(4px);
+        }
+
+        /* ========================================
+           PHILOSOPHY SECTION
+        ======================================== */
+        .philosophy-section {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-bg-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(100px, 18vw, 300px);
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.015);
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .philosophy-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .philosophy-quote-icon {
+            font-size: 48px;
+            color: var(--secondary);
+            margin-bottom: 40px;
+            opacity: 0.5;
+        }
+
+        .philosophy-text {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: clamp(22px, 3vw, 36px);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+            margin-bottom: 32px;
+        }
+
+        .philosophy-text .accent {
+            color: var(--secondary);
+        }
+
+        .philosophy-sub {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 2;
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+
+        .philosophy-decoration {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .philosophy-decoration-1 {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            right: -100px;
+            background: radial-gradient(circle, rgba(74, 144, 164, 0.08), transparent 70%);
+        }
+
+        .philosophy-decoration-2 {
+            width: 300px;
+            height: 300px;
+            bottom: -80px;
+            left: -80px;
+            background: radial-gradient(circle, rgba(123, 201, 166, 0.06), transparent 70%);
+        }
+
+        .philosophy-btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 40px;
+            border-radius: 9999px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+
+        .philosophy-btn-outline:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* ========================================
+           COUNTER SECTION
+        ======================================== */
+        .counter-section {
+            background: var(--white);
+            position: relative;
+        }
+
+        .counter-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
+        }
+
+        .counter-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
+        }
+
+        /* ========================================
+           NEWS SECTION
+        ======================================== */
+        .news-list {
+            margin-top: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .news-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            padding: 32px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.3s ease;
+        }
+
+        .news-item:first-child {
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .news-item:hover {
+            opacity: 0.7;
+        }
+
+        .news-date {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-400);
+            min-width: 110px;
+            padding-top: 2px;
+            letter-spacing: 0.02em;
+        }
+
+        .news-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            min-width: 80px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .news-tag-info {
+            background: rgba(74, 144, 164, 0.08);
+            color: var(--primary);
+        }
+
+        .news-tag-service {
+            background: rgba(123, 201, 166, 0.1);
+            color: var(--secondary-dark);
+        }
+
+        .news-tag-press {
+            background: rgba(16, 185, 129, 0.08);
+            color: #10b981;
+        }
+
+        .news-tag-event {
+            background: rgba(139, 92, 246, 0.08);
+            color: #8b5cf6;
+        }
+
+        .news-title {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gray-900);
+            line-height: 1.6;
+        }
+
+        .news-more {
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        /* ========================================
+           CTA SECTION DECORATIONS
+        ======================================== */
+        .home-cta {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-cta .cta-deco {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .home-cta .cta-deco-1 {
+            width: 500px;
+            height: 500px;
+            top: -200px;
+            right: -100px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 70%);
+        }
+
+        .home-cta .cta-deco-2 {
+            width: 300px;
+            height: 300px;
+            bottom: -100px;
+            left: -50px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.04), transparent 70%);
+        }
+
+        /* ========================================
+           RESPONSIVE HERO
+        ======================================== */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 100vh;
+                min-height: 100dvh;
+            }
+
+            .hero-content {
+                padding: 0 20px;
+            }
+
+            .hero-badges {
+                gap: 10px;
+                margin-bottom: 28px;
+            }
+
+            .hero-badge {
+                padding: 6px 14px;
+                font-size: 11px;
+            }
+
+            .hero-subtitle {
+                font-size: 14px;
+                margin-bottom: 36px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .hero-actions .btn,
+            .hero-actions .hero-btn-outline {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .hero-scroll-indicator {
+                bottom: 24px;
+            }
+
+            .hero-watermark {
+                font-size: 120px;
+                bottom: 2%;
+                right: -10%;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .service-card {
+                padding: 40px 28px;
+            }
+
+            .service-card-title {
+                font-size: 22px;
+            }
+
+            .service-card-number {
+                font-size: 60px;
+                top: 24px;
+                right: 24px;
+            }
+
+            .news-item {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .news-date {
+                min-width: auto;
+            }
+
+            .news-meta {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         LOADING SCREEN
+    ============================================= -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader-logo">
+            <span style="font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 48px; letter-spacing: -0.02em; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">CHARM</span>
+        </div>
+        <div class="loader-bar-track">
+            <div class="loader-bar" id="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         CUSTOM CURSOR
+    ============================================= -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
+
+    <!-- ============================================
+         SCROLL PROGRESS BAR
+    ============================================= -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- ============================================
+         BACKGROUND DECORATIONS
+    ============================================= -->
+    <div class="bg-decoration">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
+
+    <!-- ============================================
+         HEADER
+    ============================================= -->
+    <header class="site-header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="header-logo">
+                <span style="font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 28px; letter-spacing: -0.02em; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">CHARM</span>
+            </a>
+
+            <nav class="nav-desktop">
+                <a href="index.html" class="active">ホーム</a>
+                <a href="about.html">会社概要</a>
+                <a href="philosophy.html">企業理念</a>
+                <a href="solar.html">太陽光事業</a>
+                <a href="backoffice.html">事務代行</a>
+                <a href="works.html">実績紹介</a>
+                <a href="news.html">お知らせ</a>
+                <a href="recruit.html">採用情報</a>
+            </nav>
+
+            <a href="contact.html" class="nav-cta">
+                <span>お問い合わせ</span>
+                <i class="fas fa-arrow-right" style="font-size: 12px;"></i>
+            </a>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="メニューを開く">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="nav-mobile" id="nav-mobile">
+        <a href="index.html" class="active">ホーム</a>
+        <a href="about.html">会社概要</a>
+        <a href="philosophy.html">企業理念</a>
+        <a href="solar.html">太陽光事業</a>
+        <a href="backoffice.html">事務代行</a>
+        <a href="works.html">実績紹介</a>
+        <a href="news.html">お知らせ</a>
+        <a href="recruit.html">採用情報</a>
+        <a href="contact.html">お問い合わせ</a>
+    </nav>
+
+    <!-- ============================================
+         HERO SECTION
+    ============================================= -->
+    <section class="hero" id="hero">
+        <!-- Background Image -->
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80" alt="太陽光パネル" width="2072" height="1381">
+        </div>
+
+        <!-- Gradient Overlay -->
+        <div class="hero-gradient"></div>
+
+        <!-- Particles Background -->
+        <div class="hero-particles" id="particles-js"></div>
+
+        <!-- Watermark Text -->
+        <div class="hero-watermark">CHARM</div>
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <!-- Animated Badges -->
+            <div class="hero-badges">
+                <div class="hero-badge">
+                    <i class="fas fa-solar-panel"></i>
+                    <span>Solar Energy</span>
+                </div>
+                <div class="hero-badge">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span>Back Office</span>
+                </div>
+                <div class="hero-badge">
+                    <i class="fas fa-shield-halved"></i>
+                    <span>Trusted Partner</span>
+                </div>
+            </div>
+
+            <!-- Main Title -->
+            <h1 class="hero-title-main">
+                <span class="char-accent">C</span>HARM
+            </h1>
+
+            <!-- Japanese Tagline -->
+            <p class="hero-tagline">太陽の力で、未来を支える</p>
+
+            <!-- Subtitle -->
+            <p class="hero-subtitle">
+                再生可能エネルギーと高品質なバックオフィスサービスで、<br class="pc-only">
+                持続可能な社会と企業の成長を力強くサポートします。
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="hero-actions">
+                <a href="contact.html" class="btn btn-primary btn-lg btn-arrow">
+                    <span>お問い合わせ</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="about.html" class="hero-btn-outline">
+                    <span>会社概要を見る</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="hero-scroll-indicator">
+            <span class="hero-scroll-text">Scroll</span>
+            <div class="hero-scroll-line"></div>
+        </div>
+
+        <!-- Bottom Line -->
+        <div class="hero-line"></div>
+    </section>
+
+    <!-- ============================================
+         SERVICES SECTION
+    ============================================= -->
+    <section class="section" id="services" style="padding-top: 140px; padding-bottom: 140px;">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header reveal">
+                <span class="section-label">Our Services</span>
+                <h2 class="section-title">事業紹介</h2>
+                <p class="section-desc">
+                    太陽光発電事業と事務代行サービスの2つの柱で、<br class="pc-only">
+                    お客様のビジネスと社会の持続的な発展に貢献します。
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="services-grid">
+                <!-- Solar Energy Card -->
+                <div class="service-card card-glass service-card-solar reveal reveal-left stagger-1">
+                    <div class="service-card-decoration"></div>
+                    <div class="service-card-number">01</div>
+                    <div class="service-card-icon">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <h3 class="service-card-title">太陽光事業</h3>
+                    <span class="service-card-title-en">Solar Energy Business</span>
+                    <p class="service-card-desc">
+                        企画・設計から施工・保守まで、太陽光発電に関するすべてをワンストップでサポート。再生可能エネルギーの導入を通じて、コスト削減とCO2排出量の低減を同時に実現します。産業用から住宅用まで幅広く対応いたします。
+                    </p>
+                    <a href="solar.html" class="service-card-link">
+                        <span>詳しく見る</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Back Office Card -->
+                <div class="service-card card-glass service-card-office reveal reveal-right stagger-2">
+                    <div class="service-card-decoration"></div>
+                    <div class="service-card-number">02</div>
+                    <div class="service-card-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3 class="service-card-title">事務代行</h3>
+                    <span class="service-card-title-en">Back Office Services</span>
+                    <p class="service-card-desc">
+                        経理・人事・総務などのバックオフィス業務を高品質かつ低コストで代行。お客様がコア業務に集中できる環境を整えます。経験豊富なスタッフが、正確かつ迅速な業務処理で企業運営をサポートいたします。
+                    </p>
+                    <a href="backoffice.html" class="service-card-link">
+                        <span>詳しく見る</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PHILOSOPHY SECTION
+    ============================================= -->
+    <section class="section philosophy-section" style="padding-top: 140px; padding-bottom: 140px;">
+        <div class="philosophy-bg-text">PHILOSOPHY</div>
+        <div class="philosophy-decoration philosophy-decoration-1"></div>
+        <div class="philosophy-decoration philosophy-decoration-2"></div>
+
+        <div class="container">
+            <div class="philosophy-content reveal reveal-scale">
+                <div class="philosophy-quote-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="philosophy-text">
+                    <span class="accent">太陽の恵み</span>を活かし、<br>
+                    人と企業の<span class="accent">未来</span>を照らす。<br>
+                    それが私たちの使命です。
+                </p>
+                <p class="philosophy-sub">
+                    株式会社CHARMは、再生可能エネルギーの普及と<br class="pc-only">
+                    効率的なビジネスサポートを通じて、<br class="pc-only">
+                    持続可能な社会の実現に挑戦し続けます。
+                </p>
+                <a href="philosophy.html" class="philosophy-btn-outline">
+                    <span>企業理念について</span>
+                    <i class="fas fa-arrow-right" style="font-size: 12px;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         COUNTER / STATS SECTION
+    ============================================= -->
+    <section class="section counter-section" style="padding-top: 100px; padding-bottom: 100px;">
+        <div class="container">
+            <div class="counter-grid reveal">
+                <div class="counter-item stagger-1">
+                    <span class="counter-number text-gradient" data-count="500">0</span>
+                    <span class="counter-suffix text-gradient">+</span>
+                    <span class="counter-label">累計導入件数</span>
+                </div>
+                <div class="counter-item stagger-2">
+                    <span class="counter-number text-gradient" data-count="98">0</span>
+                    <span class="counter-suffix text-gradient">%</span>
+                    <span class="counter-label">顧客満足度</span>
+                </div>
+                <div class="counter-item stagger-3">
+                    <span class="counter-number text-gradient" data-count="10">0</span>
+                    <span class="counter-suffix text-gradient">+年</span>
+                    <span class="counter-label">事業年数</span>
+                </div>
+                <div class="counter-item stagger-4">
+                    <span class="counter-number text-gradient" data-count="24">0</span>
+                    <span class="counter-suffix text-gradient">h</span>
+                    <span class="counter-label">サポート対応</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         NEWS SECTION
+    ============================================= -->
+    <section class="section" id="news" style="padding-top: 120px; padding-bottom: 120px;">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header reveal">
+                <span class="section-label">News</span>
+                <h2 class="section-title">お知らせ</h2>
+                <p class="section-desc">
+                    株式会社CHARMからの最新情報をお届けします。
+                </p>
+            </div>
+
+            <!-- News List -->
+            <div class="news-list">
+                <a href="news.html" class="news-item reveal stagger-1">
+                    <span class="news-date">2026.02.15</span>
+                    <span class="news-tag news-tag-info">お知らせ</span>
+                    <span class="news-title">コーポレートサイトをリニューアルいたしました</span>
+                </a>
+
+                <a href="news.html" class="news-item reveal stagger-2">
+                    <span class="news-date">2026.01.28</span>
+                    <span class="news-tag news-tag-service">サービス</span>
+                    <span class="news-title">事務代行サービスの新プランを開始いたしました</span>
+                </a>
+
+                <a href="news.html" class="news-item reveal stagger-3">
+                    <span class="news-date">2026.01.10</span>
+                    <span class="news-tag news-tag-press">プレス</span>
+                    <span class="news-title">太陽光発電システムの累計導入件数が500件を突破しました</span>
+                </a>
+
+                <a href="news.html" class="news-item reveal stagger-4">
+                    <span class="news-date">2025.12.20</span>
+                    <span class="news-tag news-tag-event">イベント</span>
+                    <span class="news-title">再生可能エネルギーEXPO 2026に出展いたします</span>
+                </a>
+            </div>
+
+            <!-- More Link -->
+            <div class="news-more reveal">
+                <a href="news.html" class="btn btn-outline btn-arrow">
+                    <span>すべてのお知らせ</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CTA SECTION
+    ============================================= -->
+    <section class="cta-section home-cta">
+        <div class="cta-deco cta-deco-1"></div>
+        <div class="cta-deco cta-deco-2"></div>
+        <div class="container">
+            <div class="cta-content reveal reveal-scale">
+                <span class="section-label" style="color: rgba(255,255,255,0.7);">Contact Us</span>
+                <h2 class="cta-title">まずはお気軽にご相談ください</h2>
+                <p class="cta-text">
+                    太陽光発電の導入から事務代行まで、お客様の課題解決に最適なプランをご提案いたします。<br class="pc-only">
+                    お見積もり・ご相談は無料です。
+                </p>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn btn-white btn-lg btn-arrow">
+                        <span>お問い合わせ</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="tel:052-990-0362" class="btn btn-lg" style="background: transparent; border: 2px solid rgba(255,255,255,0.3); color: #fff;">
+                        <i class="fas fa-phone" style="font-size: 14px;"></i>
+                        <span>052-990-0362</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+    ============================================= -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <!-- Brand Column -->
+                    <div class="footer-brand">
+                        <a href="index.html" class="footer-logo">
+                            <span style="font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 32px; letter-spacing: -0.02em; color: #ffffff;">CHARM</span>
+                        </a>
+                        <p style="color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.8; margin-top: 20px; font-family: 'Noto Sans JP', sans-serif;">
+                            太陽の力で、未来を支える。<br>
+                            再生可能エネルギーとバックオフィス<br>
+                            サービスで企業の成長を支援します。
+                        </p>
+                    </div>
+
+                    <!-- Services Links -->
+                    <div>
+                        <h4 class="footer-heading">事業内容</h4>
+                        <ul class="footer-links">
+                            <li><a href="solar.html">太陽光事業</a></li>
+                            <li><a href="backoffice.html">事務代行</a></li>
+                            <li><a href="works.html">実績紹介</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company Links -->
+                    <div>
+                        <h4 class="footer-heading">企業情報</h4>
+                        <ul class="footer-links">
+                            <li><a href="about.html">会社概要</a></li>
+                            <li><a href="philosophy.html">企業理念</a></li>
+                            <li><a href="news.html">お知らせ</a></li>
+                            <li><a href="recruit.html">採用情報</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div>
+                        <h4 class="footer-heading">お問い合わせ</h4>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-map-marker-alt icon" style="color: var(--secondary); font-size: 16px; margin-top: 3px; flex-shrink: 0;"></i>
+                            <span>〒460-0003<br>名古屋市中区錦三丁目５番３０号<br>三晃錦ビル４Ｆ</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-phone icon" style="color: var(--secondary); font-size: 14px; margin-top: 3px; flex-shrink: 0;"></i>
+                            <a href="tel:052-990-0362" style="color: rgba(255,255,255,0.6); transition: color 0.2s;">052-990-0362</a>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <a href="contact.html" class="btn" style="background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 13px; padding: 10px 24px; border-radius: 9999px;">
+                                <span>お問い合わせフォーム</span>
+                                <i class="fas fa-arrow-right" style="font-size: 10px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-inner container">
+                <p class="copyright">&copy; 2026 株式会社CHARM All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">プライバシーポリシー</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         SCRIPTS
+    ============================================= -->
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+
+    <!-- Homepage: Particles.js Config & Hero Init -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Particles.js - Hero configuration
+            if (typeof particlesJS !== 'undefined' && document.getElementById('particles-js')) {
+                particlesJS('particles-js', {
+                    particles: {
+                        number: {
+                            value: 50,
+                            density: {
+                                enable: true,
+                                value_area: 1000
+                            }
+                        },
+                        color: {
+                            value: '#7BC9A6'
+                        },
+                        shape: {
+                            type: 'circle'
+                        },
+                        opacity: {
+                            value: 0.15,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 0.5,
+                                opacity_min: 0.05,
+                                sync: false
+                            }
+                        },
+                        size: {
+                            value: 3,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 1,
+                                size_min: 0.5,
+                                sync: false
+                            }
+                        },
+                        line_linked: {
+                            enable: true,
+                            distance: 160,
+                            color: '#4A90A4',
+                            opacity: 0.06,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 0.8,
+                            direction: 'none',
+                            random: true,
+                            straight: false,
+                            out_mode: 'out',
+                            bounce: false
+                        }
+                    },
+                    interactivity: {
+                        detect_on: 'canvas',
+                        events: {
+                            onhover: {
+                                enable: true,
+                                mode: 'grab'
+                            },
+                            onclick: {
+                                enable: false
+                            },
+                            resize: true
+                        },
+                        modes: {
+                            grab: {
+                                distance: 140,
+                                line_linked: {
+                                    opacity: 0.15
+                                }
+                            }
+                        }
+                    },
+                    retina_detect: true
+                });
+            }
+
+            // Hero visibility for background zoom animation
+            setTimeout(function () {
+                var hero = document.getElementById('hero');
+                if (hero) {
+                    hero.classList.add('is-visible');
+                }
+            }, 300);
+        });
+    </script>
+
+</body>
+</html>
