@@ -1,5 +1,5 @@
 {
-  "redirects": [
-    { "source": "/", "destination": "/v1/", "permanent": false }
+  "rewrites": [
+    { "source": "/((?!v1/|v2/).*)", "destination": "/v1/$1" }
   ]
 }
